@@ -1,0 +1,672 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- <link rel="stylesheet" href="css/style.css" /> -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="icon" href="/assets/icon-browser.PNG" />
+
+    <!-- ==================BOOTSTRAP================== -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD"
+      crossorigin="anonymous"
+    />
+
+    <!-- ==================FONT AWESOME================== -->
+    <script
+      src="https://kit.fontawesome.com/cae3288767.js"
+      crossorigin="anonymous"
+    ></script>
+    <!-- ============GOOGLE ICONS============ -->
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,1,0"
+    />
+
+    <!-- ==================SWIPER JS================== -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
+    <title>RIBAT SARL - IT SOLUTIONS</title>
+  </head>
+  <body>
+    <div class="container-me">
+      <div class="navbar-me">
+        <div class="logo-me">
+          <img src="{{url_for('static' , filename='assets/logo-ribat.PNG')}}" alt="logo-ribat" />
+        </div>
+        <div class="menu-me">
+          <nav>
+            <ul>
+              <li class="hv"><a href="#home">HOME</a></li>
+              <li class="hv"><a href="#services">SERVICES</a></li>
+              <li class="hv"><a href="#values">OUR VALUES</a></li>
+              <li class="hv"><a href="#vision">OUR VISION</a></li>
+              <li class="hv"><a href="#recruite">RECRUITE</a></li>
+              <li class="hv"><a href="#contact">CONTACT</a></li>
+              <li>
+                <div class="dropdown p-md-0">
+                  <button
+                    class="btn .btn-primary dropdown-toggle p-md-1 lang"
+                    type="button"
+                    data-bs-toggle="dropdown"
+                    aria-expanded="false"
+                  >
+                    <span class="material-symbols-outlined"> translate </span>
+                    EN
+                  </button>
+                  <ul class="dropdown-menu flex-lg-column">
+                    <li>
+                      <button class="dropdown-item" type="button">
+                        AR (Underway)
+                      </button>
+                    </li>
+                    <li>
+                      <button class="dropdown-item" type="button">
+                        FR (Underway)
+                      </button>
+                    </li>
+                  </ul>
+                </div>
+              </li>
+            </ul>
+            <!-- ===============NAV BAR FOR PHONE============= -->
+            <div class="links">
+              <ul>
+                <li><a href="#home">HOME</a></li>
+                <li><a href="#services">SERVICES</a></li>
+                <li><a href="#values">OUR VALUES</a></li>
+                <li><a href="#vision">OUR VISION</a></li>
+                <li><a href="#recruite">RECRUITE</a></li>
+                <li><a href="#contact">CONTACT</a></li>
+              </ul>
+            </div>
+            <div class="hamburger-menu">
+              <div class="bar"></div>
+            </div>
+            <!-- ===============NAV BAR FOR PHONE============= -->
+          </nav>
+        </div>
+      </div>
+
+      <!-- ==============OUR VALUES=================== -->
+
+      <section class="values" id="values">
+        <div class="title-services reveal">
+          <h1>OUR VALUES</h1>
+        </div>
+        <div class="pt">
+          <img
+            src="assets/patterns/pt8.png"
+            alt=""
+            class="patterns pt-products8"
+          />
+          <img
+            src="assets/patterns/pt7.png"
+            alt=""
+            class="patterns pt-values"
+          />
+        </div>
+
+        <div class="swiper reveal pc">
+          <!-- Additional required wrapper -->
+          <div class="swiper-wrapper">
+            <!-- Slides -->
+            <div class="swiper-slide">
+              <div class="swiper-slide">
+                <!-- ====================CARD AGILITY======================== -->
+                <div class="card-value">
+                  <div class="title-card">
+                    <img
+                      src="assets/icons/agility.png"
+                      alt=""
+                      class="icon-cards"
+                    />
+                    <h1>AGILITY</h1>
+                  </div>
+                  <div class="text-cards">
+                    <p>
+                      We are a company that values speed, flexibility, and
+                      adaptability. <br />
+                      Our team is able to quickly respond to the changing needs
+                      of our clients, and we are constantly looking for ways to
+                      improve our processes and services.
+                    </p>
+                  </div>
+                </div>
+                <!-- ====================FIN CARD AGILITY======================== -->
+                <!-- ====================CARD PERFORMANCE======================== -->
+                <div class="card-value">
+                  <div class="title-card">
+                    <img
+                      src="assets/icons/performance.png"
+                      alt=""
+                      class="icon-cards"
+                    />
+                    <h1>PERFORMANCE</h1>
+                  </div>
+                  <div class="text-cards">
+                    <p>
+                      We are committed to delivering the highest quality
+                      products and services to our clients. <br />
+                      We measure our success by the results that we achieve for
+                      our clients and we are always looking for ways to improve
+                      our performance.
+                    </p>
+                  </div>
+                </div>
+                <!-- ====================FIN CARD PERFORMANCE======================== -->
+                <!-- ====================CARD POWER TEAM======================== -->
+                <div class="card-value">
+                  <div class="title-card">
+                    <img
+                      src="assets/icons/team.png"
+                      alt=""
+                      class="icon-cards"
+                    />
+                    <h1>POWER TEAM</h1>
+                  </div>
+                  <div class="text-cards">
+                    <p>
+                      Our team consists of experienced professionals who are
+                      experts in their field. <br />
+                      We take pride in our ability to work together seamlessly
+                      to achieve our clients' goals and deliver results.
+                    </p>
+                  </div>
+                </div>
+                <!-- ====================FIN CARD POWER TEAM======================== -->
+              </div>
+            </div>
+            <div class="swiper-slide">
+              <!-- ====================CARD CUSTOMER======================== -->
+              <div class="card-value">
+                <div class="title-card">
+                  <img
+                    src="assets/icons/customer.png"
+                    alt=""
+                    class="icon-cards"
+                  />
+                  <h1>CUSTOMER PRIORITY</h1>
+                </div>
+                <div class="text-cards">
+                  <p>
+                    We understand that our success is directly linked to the
+                    satisfaction of our clients, that's why our customer's needs
+                    are our top priority. <br />
+                    We always put ourselves in our clients' shoes to understand
+                    and exceed their expectations.
+                  </p>
+                </div>
+              </div>
+              <!-- ====================FIN CARD CUSTOMER======================== -->
+              <!-- ====================CARD CREATIVITY======================== -->
+              <div class="card-value">
+                <div class="title-card">
+                  <img
+                    src="assets/icons/creativity.png"
+                    alt=""
+                    class="icon-cards"
+                  />
+                  <h1>CREATIVITY</h1>
+                </div>
+                <div class="text-cards">
+                  <p>
+                    We believe that creativity is the key to success. We
+                    encourage our team members to think outside of the box and
+                    come up with new and innovative solutions to our clients'
+                    problems. <br />
+                    We're always looking for new ways to push the boundaries of
+                    what's possible and deliver cutting-edge products and
+                    services.
+                  </p>
+                </div>
+              </div>
+              <!-- ====================FIN CARD CREATIVITY======================== -->
+            </div>
+          </div>
+          <!-- If we need pagination -->
+          <div class="swiper-pagination"></div>
+
+          <!-- If we need navigation buttons -->
+          <div class="swiper-button-prev"></div>
+          <div class="swiper-button-next"></div>
+        </div>
+        <div class="tel">
+          <div class="swiper reveal">
+            <div class="swiper-wrapper">
+              <!-- ====================CARD AGILITY======================== -->
+              <div class="swiper-slide">
+                <div class="card-value">
+                  <div class="title-card">
+                    <img
+                      src="assets/icons/agility.png"
+                      alt=""
+                      class="icon-cards"
+                    />
+                    <h1>AGILITY</h1>
+                  </div>
+                  <div class="text-cards">
+                    <p>
+                      We are a company that values speed, flexibility, and
+                      adaptability. <br />
+                      Our team is able to quickly respond to the changing needs
+                      of our clients, and we are constantly looking for ways to
+                      improve our processes and services.
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <!-- ====================FIN CARD AGILITY======================== -->
+              <!-- ====================CARD PERFORMANCE======================== -->
+              <div class="swiper-slide">
+                <div class="card-value">
+                  <div class="title-card">
+                    <img
+                      src="assets/icons/performance.png"
+                      alt=""
+                      class="icon-cards"
+                    />
+                    <h1>PERFORMANCE</h1>
+                  </div>
+                  <div class="text-cards">
+                    <p>
+                      We are committed to delivering the highest quality
+                      products and services to our clients. <br />
+                      We measure our success by the results that we achieve for
+                      our clients and we are always looking for ways to improve
+                      our performance.
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <!-- ====================FIN CARD PERFORMANCE======================== -->
+              <!-- ====================CARD POWER TEAM======================== -->
+              <div class="swiper-slide">
+                <div class="card-value">
+                  <div class="title-card">
+                    <img
+                      src="assets/icons/team.png"
+                      alt=""
+                      class="icon-cards"
+                    />
+                    <h1>POWER TEAM</h1>
+                  </div>
+                  <div class="text-cards">
+                    <p>
+                      Our team consists of experienced professionals who are
+                      experts in their field. <br />
+                      We take pride in our ability to work together seamlessly
+                      to achieve our clients' goals and deliver results.
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <!-- ====================FIN CARD POWER TEAM======================== -->
+              <!-- ====================CARD CUSTOMER======================== -->
+              <div class="swiper-slide">
+                <div class="card-value">
+                  <div class="title-card">
+                    <img
+                      src="assets/icons/customer.png"
+                      alt=""
+                      class="icon-cards"
+                    />
+                    <h1>CUSTOMER PRIORITY</h1>
+                  </div>
+                  <div class="text-cards">
+                    <p>
+                      We understand that our success is directly linked to the
+                      satisfaction of our clients, that's why our customer's
+                      needs are our top priority. <br />
+                      We always put ourselves in our clients' shoes to
+                      understand and exceed their expectations.
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <!-- ====================FIN CARD CUSTOMER======================== -->
+              <!-- ====================CARD CREATIVITY======================== -->
+              <div class="swiper-slide">
+                <div class="card-value">
+                  <div class="title-card">
+                    <img
+                      src="assets/icons/creativity.png"
+                      alt=""
+                      class="icon-cards"
+                    />
+                    <h1>CREATIVITY</h1>
+                  </div>
+                  <div class="text-cards">
+                    <p>
+                      We believe that creativity is the key to success. We
+                      encourage our team members to think outside of the box and
+                      come up with new and innovative solutions to our clients'
+                      problems. <br />
+                      We're always looking for new ways to push the boundaries
+                      of what's possible and deliver cutting-edge products and
+                      services.
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <!-- ====================FIN CARD CREATIVITY======================== -->
+            </div>
+            <!-- If we need pagination -->
+            <div class="swiper-pagination"></div>
+
+            <!-- If we need navigation buttons -->
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-button-next"></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==============FIN OUR VALUES=================== -->
+
+
+      <!-- ================RECRUITE================== -->
+
+      <section class="recruite" id="recruite">
+        <div class="title-vision reveal">
+          <h1>JOB OFFER</h1>
+        </div>
+        <div class="pt">
+          <img
+            src="assets/patterns/line.png"
+            alt=""
+            class="patterns pt-products8"
+          />
+          <img src="assets/patterns/pt10.png" alt="" class="patterns pt10" />
+        </div>
+        <div class="alert alert-info d-none d-lg-block w-75 reveal">
+          Join our team of IT, data, application development, web, and AI
+          experts in shaping the future of technology. <br />
+          Exciting opportunities await for those who want to make an impact.
+        </div>
+        <!-- CARDS FOR PC -->
+        <div class="card mb-3 w-75 reveal crd-pc">
+          <div class="row g-0 hv-cards-recruite">
+            <div class="col-md-4 flex-column w-25">
+              <img
+                src="/assets/icons/node-js.png"
+                class="img-fluid rounded-start w-50 text-center"
+                alt="..."
+              />
+            </div>
+            <div class="col-md-8">
+              <div class="card-body">
+                <h5 class="card-title fw-bold">FULL STACk DEVELOPPER</h5>
+                <p class="card-text">
+                  Join our team as a Full Stack Developer and work on
+                  cutting-edge projects utilizing your skills in JavaScript,
+                  React, Node.js, and Python. <br />
+                  Experience with cloud platforms and databases required.
+                </p>
+                <p class="card-text">
+                  <small class="text-muted"
+                    >Send your CV to the following email:
+                    <a
+                      href="mailto:hr@ribatdev.com"
+                      class="fw-bold stretched-link"
+                      >hr@ribatdev.com</a
+                    ></small
+                  >
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="card mb-3 w-75 reveal crd-pc">
+          <div class="row g-0 hv-cards-recruite">
+            <div class="col-md-4 flex-column w-25">
+              <img
+                src="/assets/icons/python.png"
+                class="img-fluid rounded-start w-50 text-center"
+                alt="..."
+              />
+            </div>
+            <div class="col-md-8">
+              <div class="card-body">
+                <h5 class="card-title fw-bold">PYTHON DEVELOPPER</h5>
+                <p class="card-text">
+                  Seeking a Python Developer with experience in Django and Flask
+                  to join our team. <br />
+                  Strong understanding of REST APIs, Git, SQL required. <br />
+                  Exciting projects and opportunities await.
+                </p>
+                <p class="card-text">
+                  <small class="text-muted"
+                    >Send your CV to the following email:
+                    <a
+                      href="mailto:hr@ribatdev.com"
+                      class="fw-bold stretched-link"
+                      >hr@ribatdev.com</a
+                    ></small
+                  >
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="card mb-3 w-75 reveal crd-pc">
+          <div class="row g-0 hv-cards-recruite">
+            <div class="col-md-4 flex-column w-25">
+              <img
+                src="/assets/icons/graphic-design.png"
+                class="img-fluid rounded-start w-50 text-center"
+                alt="..."
+              />
+            </div>
+            <div class="col-md-8">
+              <div class="card-body">
+                <h5 class="card-title fw-bold">GRAPHIC DESIGNER</h5>
+                <p class="card-text">
+                  Required Skills: Adobe Creative Suite, Photoshop, Illustrator,
+                  and InDesign to create visually stunning designs for digital
+                  and print media. <br />
+                  Strong portfolio and experience in branding, typography and
+                  layout required.
+                </p>
+                <p class="card-text">
+                  <small class="text-muted"
+                    >Send your CV to the following email:
+                    <a
+                      href="mailto:hr@ribatdev.com"
+                      class="fw-bold stretched-link"
+                      >hr@ribatdev.com</a
+                    ></small
+                  >
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="card mb-3 w-75 reveal crd-pc">
+          <div class="row g-0 hv-cards-recruite">
+            <div class="col-md-4 flex-column w-25">
+              <img
+                src="/assets/icons/data-analyst.png"
+                class="img-fluid rounded-start w-50 text-center"
+                alt="..."
+              />
+            </div>
+            <div class="col-md-8">
+              <div class="card-body">
+                <h5 class="card-title fw-bold">DATA ANALYST</h5>
+                <p class="card-text">
+                  Required Skills: data analysis and visualization, SQL, Python,
+                  and R to turn data into actionable insights. <br />
+                  Experience with data modelling, statistics and machine
+                  learning required. <br />
+                  Join our team and drive data-driven decision making.
+                </p>
+                <p class="card-text">
+                  <small class="text-muted"
+                    >Send your CV to the following email:
+                    <a
+                      href="mailto:hr@ribatdev.com"
+                      class="fw-bold stretched-link"
+                      >hr@ribatdev.com</a
+                    ></small
+                  >
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- FIN CARDS FOR PC -->
+        <!-- CARDS FOR PHONE -->
+        <div class="card crd-phone flex-column mb-3" style="width: 18rem">
+          <img
+            src="/assets/icons/node-js.png"
+            class="card-img-top w-25"
+            alt="..."
+          />
+          <div class="card-body">
+            <h5 class="card-title fw-bold body-phone">FULL STACk DEVELOPPER</h5>
+            <p class="card-text">
+              Join our team as a Full Stack Developer and work on cutting-edge
+              projects utilizing your skills in JavaScript, React, Node.js, and
+              Python. <br />
+              Experience with cloud platforms and databases required.
+            </p>
+            <p class="card-text">
+              <small class="text-muted"
+                >Send your CV to the following email:
+                <a href="mailto:hr@ribatdev.com" class="fw-bold stretched-link"
+                  >hr@ribatdev.com</a
+                ></small
+              >
+            </p>
+          </div>
+        </div>
+        <div class="card crd-phone flex-column mb-3" style="width: 18rem">
+          <img
+            src="/assets/icons/python.png"
+            class="card-img-top w-25"
+            alt="..."
+          />
+          <div class="card-body">
+            <h5 class="card-title fw-bold body-phone">PYTHON DEVELOPPER</h5>
+            <p class="card-text">
+              Seeking a Python Developer with experience in Django and Flask to
+              join our team. <br />
+              Strong understanding of REST APIs, Git, SQL required. <br />
+              Exciting projects and opportunities await.
+            </p>
+            <p class="card-text">
+              <small class="text-muted"
+                >Send your CV to the following email:
+                <a href="mailto:hr@ribatdev.com" class="fw-bold stretched-link"
+                  >hr@ribatdev.com</a
+                ></small
+              >
+            </p>
+          </div>
+        </div>
+        <div class="card crd-phone flex-column mb-3" style="width: 18rem">
+          <img
+            src="/assets/icons/graphic-design.png"
+            class="card-img-top w-25"
+            alt="..."
+          />
+          <div class="card-body">
+            <h5 class="card-title fw-bold body-phone">GRAPHIC DESIGNER</h5>
+            <p class="card-text">
+              Required Skills: Adobe Creative Suite, Photoshop, Illustrator, and
+              InDesign to create visually stunning designs for digital and print
+              media. <br />
+              Strong portfolio and experience in branding, typography and layout
+              required.
+            </p>
+            <p class="card-text">
+              <small class="text-muted"
+                >Send your CV to the following email:
+                <a href="mailto:hr@ribatdev.com" class="fw-bold stretched-link"
+                  >hr@ribatdev.com</a
+                ></small
+              >
+            </p>
+          </div>
+        </div>
+        <div class="card crd-phone flex-column mb-3" style="width: 18rem">
+          <img
+            src="/assets/icons/data-analyst.png"
+            class="card-img-top w-25"
+            alt="..."
+          />
+          <div class="card-body">
+            <h5 class="card-title fw-bold body-phone">DATA ANALYST</h5>
+            <p class="card-text">
+              Required Skills: data analysis and visualization, SQL, Python, and
+              R to turn data into actionable insights. <br />
+              Experience with data modelling, statistics and machine learning
+              required. <br />
+              Join our team and drive data-driven decision making.
+            </p>
+
+            <p class="card-text">
+              <small class="text-muted"
+                >Send your CV to the following email:
+                <a href="mailto:hr@ribatdev.com" class="fw-bold stretched-link"
+                  >hr@ribatdev.com</a
+                ></small
+              >
+            </p>
+          </div>
+        </div>
+        <!-- FIN CARDS FOR PHONE -->
+      </section>
+
+      <!-- ==================FIN RECRUITE==================== -->
+
+    </div>
+
+    <!-- =================FOOTER============== -->
+    <footer class="footer bottom-0 mb-0">
+      <div class="copyright">
+        <p>&#169;copyright <a href="#">Ribat</a> 2023</p>
+      </div>
+      <div class="back-btn-wrap">
+        <a href="#" class="back-btn">
+          <i class="fas fa-chevron-up"></i>
+        </a>
+      </div>
+    </footer>
+    <!-- =================FIN FOOTER============== -->
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
+      integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3"
+      crossorigin="anonymous"
+    ></script>
+
+    <script>
+      var typpingeffect = new Typed(".multiText", {
+        strings: [
+          "Build Software...",
+          "Make Solutions...",
+          "Build Platforms...",
+        ],
+        loop: true,
+        typeSpeed: 100,
+        backSpeed: 80,
+        startDelay: 1000,
+        backDelay: 1500,
+      });
+    </script>
+  </body>
+</html>
