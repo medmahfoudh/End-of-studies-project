@@ -6,7 +6,7 @@ app = Flask(__name__)
 def home():
     return render_template('home.html')
 
-@app.route('/sing_in')
+@app.route('/sign_in')
 def sign_in():
     return render_template('sign_in.html')
 
