@@ -258,7 +258,10 @@ p {
 }
 
 /*=======================FIN SCROLL ANIMATION=====================*/
-
+.patterns {
+  width: 30%;
+  position: absolute;
+}
 
 /* ========================VALUES============================= */
 .values {
@@ -276,8 +279,8 @@ p {
 
 .pt-products8 {
   width: 6%;
-  top: -54px;
-  right: 51%;
+  top: 6.5rem;
+  right: 52%;
 }
 
 .pt-values {
