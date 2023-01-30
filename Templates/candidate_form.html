@@ -1,0 +1,30 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+<div class="container text-center">
+    <div class="row">
+      <div class="col">
+        <form action="">
+            <div class="form-floating">
+                <input type="text" class="form-control mb-3" placeholder="Leave a comment here" id="floatingTextarea"></input type="text">
+                <label for="floatingTextarea">Name</label>
+              </div>
+              <div class="form-floating">
+                <input type="email" class="form-control mb-3" placeholder="E-mail" id="floatingTextarea"></input type="email">
+                <label for="floatingTextarea">E-mail</label>
+              </div>
+              <div class="form-floating">
+                <input type="number" class="form-control mb-3" placeholder="Leave a comment here" id="floatingTextarea"></input type="number">
+                <label for="floatingTextarea">Tel</label>
+              </div>
+              <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+
+      </div>
+      <div class="col">
+        Put Your CV
+      </div>
+    </div>
+</div>
+
+{% endblock %}
