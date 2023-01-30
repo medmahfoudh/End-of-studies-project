@@ -2,29 +2,45 @@
 
 {% block body %}
 <div class="container text-center">
+  <form action="">
     <div class="row">
       <div class="col">
-        <form action="">
-            <div class="form-floating">
-                <input type="text" class="form-control mb-3" placeholder="Leave a comment here" id="floatingTextarea"></input type="text">
-                <label for="floatingTextarea">Name</label>
-              </div>
-              <div class="form-floating">
-                <input type="email" class="form-control mb-3" placeholder="E-mail" id="floatingTextarea"></input type="email">
-                <label for="floatingTextarea">E-mail</label>
-              </div>
-              <div class="form-floating">
-                <input type="number" class="form-control mb-3" placeholder="Leave a comment here" id="floatingTextarea"></input type="number">
-                <label for="floatingTextarea">Tel</label>
-              </div>
-              <button type="submit" class="btn btn-primary">Submit</button>
-        </form>
+        <div class="alert alert-primary align-baseline" role="alert">
+          Merci d'avoir rempli le formulaire. Nous prenons très au sérieux la confidentialité de vos informations personnelles. <br>
+           Soyez assuré que les informations que vous fournissez ne seront utilisées que dans le but d'évaluer votre candidature. <br>
+            Seul notre service RH aura accès à vos informations, et elles ne seront pas partagées avec des tiers. <br>
+           Nous apprécions votre confiance et nous nous engageons à protéger vos données personnelles.
+        </div>
+        <div class="candidate-form">
+
+          <div class="form-floating">
+            <input type="text" class="form-control mb-3" placeholder="Leave a comment here"
+              id="floatingTextarea"></input type="text">
+            <label for="floatingTextarea">Name</label>
+          </div>
+          <div class="form-floating">
+            <input type="email" class="form-control mb-3" placeholder="E-mail" id="floatingTextarea"></input
+              type="email">
+            <label for="floatingTextarea">E-mail</label>
+          </div>
+          <div class="form-floating">
+            <input type="number" class="form-control mb-3" placeholder="Leave a comment here"
+              id="floatingTextarea"></input type="number">
+            <label for="floatingTextarea">Tel</label>
+          </div>
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
 
       </div>
-      <div class="col">
-        Put Your CV
+      <div class="col put-cv">
+
+        <div class="mb-3">
+          <label for="formFile" class="form-label">Cliquer Pour Ajouter Votre CV</label>
+          <input class="form-control" type="file" id="formFile">
+        </div>
       </div>
     </div>
+  </form>
 </div>
 
 {% endblock %}

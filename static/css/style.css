@@ -428,11 +428,11 @@ p {
   justify-content: center;
 }
 
-.hv-cards-recruite {
+/* .hv-cards-recruite {
   transition: 1s ease-in;
-}
+} */
 .hv-cards-recruite:hover {
-  background: #ffab7385;
+  background: #b8b5b385;
 }
 /* =======================FIN RECRUITE========================== */
 
@@ -619,6 +619,20 @@ nav.open .links {
 }
 
 /* ===================FIN SCROLLBAR FOR PHONE========================== */
+
+
+/* ===============PUT CANDIDATE FORM ======================= */
+.put-cv{
+  background-color: #5641ff21;
+  height: 32rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  border: dashed 2px #5641ff6e;
+}
+
+/* ===============FIN PUT CANDIDATE FORM ======================= */
 
 /* ==========================CONTACTS=========================== */
 .contact{
