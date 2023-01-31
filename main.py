@@ -10,6 +10,10 @@ def home():
 def sign_in():
     return render_template('sign_in.html')
 
+@app.route('/dashboard')
+def dashboard():
+    return render_template('/admin/dashboard.html')
+
 @app.route('/contact')
 def contact():
     return render_template('contact.html')
@@ -17,6 +21,10 @@ def contact():
 @app.route('/candidate_form')
 def candidate_form():
     return render_template('candidate_form.html')
+
+@app.route('/dashboard/id/classement')
+def classement():
+    return render_template('/admin/classement.html')
 
 if __name__ == '__main__':
     app.run(debug=True)

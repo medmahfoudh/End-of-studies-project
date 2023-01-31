@@ -1,0 +1,361 @@
+
+/* ===================SCROLLBAR FOR PHONE========================== */
+.hamburger-menu .bar {
+  position: relative;
+  width: 2.1rem;
+  height: 3px;
+  border-radius: 3px;
+  background-color: var(--dark-one);
+  transition: 0.5s;
+  z-index: 1000;
+}
+
+.bar:before,
+.bar:after {
+  content: "";
+  position: absolute;
+  width: 2.1rem;
+  height: 3px;
+  border-radius: 3px;
+  background-color: var(--dark-one);
+  transition: 0.5s;
+}
+
+.bar:before {
+  transform: translateY(-9px);
+}
+
+.bar:after {
+  transform: translateY(9px);
+}
+
+nav.open .hamburger-menu .bar {
+  background-color: transparent;
+  transform: rotate(360deg);
+}
+
+nav.open .hamburger-menu .bar:before {
+  transform: translateY(0) rotate(45deg);
+  background-color: var(--light-one);
+}
+
+nav.open .hamburger-menu .bar:after {
+  transform: translateY(0) rotate(-45deg);
+  background-color: var(--light-one);
+}
+
+nav.open li a {
+  transform: translateX(0);
+}
+
+.hamburger-menu .bar {
+  position: relative;
+  width: 2.1rem;
+  height: 3px;
+  border-radius: 3px;
+  background-color: var(--dark-one);
+  transition: 0.5s;
+}
+
+.stop-scrolling {
+  height: 100%;
+  overflow: hidden;
+}
+
+nav.open .links {
+  transform: translateX(0);
+}
+
+.bar {
+  display: none;
+}
+
+.links {
+  display: none;
+}
+
+.links a.active {
+  background-color: var(--main-color);
+  color: var(--light-one);
+  border-radius: 2rem;
+  font-size: 1rem;
+  padding: 0.9rem 2.1rem;
+  margin-left: 1rem;
+}
+
+.links a:hover {
+  color: var(--main-color);
+}
+
+.links a.active:hover {
+  color: var(--light-one);
+  background-color: #6b44e0;
+}
+
+.tel {
+  display: none;
+}
+
+.crd-phone {
+  display: none !important;
+}
+
+/* ===================FIN SCROLLBAR FOR PHONE========================== */
+
+
+
+
+/* Responsive css */
+@media only screen and (max-width: 767px) {
+    .home {
+      margin-top: 78px;
+      width: 100%;
+      height: auto;
+      flex-direction: column-reverse;
+    }
+    .col_1 {
+      width: 100%;
+      position: unset;
+    }
+    .col_2 {
+      width: 100%;
+      position: unset;
+    }
+  
+    .shp1 {
+      display: flex;
+      flex-direction: column;
+    }
+  
+    .text-ribat,
+    .description,
+    .text,
+    .get-started,
+    .window-logo {
+      position: unset;
+    }
+    .window-logo {
+      width: 99%;
+    }
+  
+    .description span {
+      font-size: 24px;
+      padding: 10px;
+    }
+    .description .multiText {
+      font-size: 24px;
+    }
+  
+    .text {
+      padding: 10px;
+    }
+  
+    .get-started {
+      width: 50%;
+    }
+    .g-s-phone {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      margin-bottom: 10px;
+    }
+  
+    .services {
+      height: auto;
+    }
+    #card-container-me {
+      display: flex;
+      gap: 20px;
+      width: 95%;
+      /* margin: 10px; */
+      flex-direction: column;
+      align-items: center;
+    }
+    .pt5 {
+      width: 13%;
+      top: 0rem;
+      right: 15%;
+      opacity: 9%;
+    }
+    .pt6 {
+      width: 43%;
+      top: -28px;
+      right: 69%;
+      opacity: 22%;
+      z-index: -1;
+      transform: rotate(45deg);
+    }
+  
+    .pt8 {
+      width: 20%;
+      top: 25px;
+      right: 58%;
+    }
+    .card-me {
+      width: 90%;
+    }
+  
+    .card-ai {
+      height: auto;
+    }
+  
+    .card-ai .text-ai-card h2 {
+      font-weight: bold;
+    }
+  
+    .values {
+      height: auto;
+    }
+  
+    .pc {
+      display: none;
+    }
+  
+    .tel {
+      display: flex;
+    }
+  
+    .tel .swiper {
+      margin-left: 0 !important;
+      margin-right: 0 !important;
+    }
+  
+    .tel .swiper-button-next {
+      right: 23rem !important;
+    }
+    .swiper-button-prev {
+      left: 23rem !important;
+    }
+  
+    .vision {
+      height: auto;
+    }
+  
+    .pt-products8 {
+      width: 20%;
+      top: -59px;
+      right: 54%;
+    }
+    .pt-values {
+      width: 69%;
+      top: -149px;
+      right: 57%;
+      opacity: 30%;
+    }
+  
+    .pt9 {
+      width: 45%;
+      top: -126px;
+      right: 64%;
+    }
+    .mb-3 {
+      margin-bottom: 0 !important;
+    }
+    .text-bg-light {
+      width: 95%;
+    }
+  
+    .crd-pc {
+      display: none !important;
+    }
+  
+    .crd-phone {
+      display: flex !important;
+    }
+  
+    .body-phone {
+      text-align: center;
+    }
+  
+    /* ===============Responsive Bar================= */
+    .hv {
+      display: none;
+    }
+    .bar {
+      display: block;
+    }
+  
+    nav.open .links {
+      transform: translateX(0);
+    }
+  
+    .navbar-me {
+      padding: 0 11px 0 0px;
+    }
+    .navbar-me .logo-me {
+      width: 34%;
+      align-items: center;
+      /* display: flex; */
+    }
+    .menu-me nav {
+      display: flex;
+      justify-content: space-evenly;
+      align-items: center;
+    }
+  
+    .links {
+      position: fixed;
+      width: 100%;
+      height: 100vh;
+      top: 0;
+      right: -2px;
+      background-color: #000000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      transform: translateX(100%);
+      transition: 0.5s;
+    }
+  
+    nav ul li {
+      z-index: 0;
+    }
+  
+    .links a.active {
+      font-size: 0.7rem;
+      margin-left: 0;
+      margin: 0.5rem 0;
+    }
+  
+    .links ul {
+      flex-direction: column;
+    }
+  
+    .links ul li a {
+      color: var(--light-one);
+    }
+  
+    .links ul li a.active {
+      margin-left: 0;
+      margin: 0.5rem 0;
+    }
+  
+    .box-wrapper {
+      width: 100%;
+    }
+    .info-wrap,
+    .form-wrap {
+      width: 100%;
+      height: inherit;
+      float: none;
+    }
+    .info-wrap {
+      border-radius: 30px 30px 0px 0px;
+    }
+    .form-wrap {
+      border-radius: 0px 0px 30px 30px;
+    }
+    .form-group {
+      width: 100%;
+      float: none;
+      margin: 25px 0px;
+    }
+    .form-fields .form-group:last-child,
+    .submit-button {
+      width: 100%;
+    }
+    .submit-button {
+      margin: 10px 0px;
+    }
+  }

@@ -7,7 +7,16 @@
     <!-- <link rel="stylesheet" href="css/style.css" /> -->
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
     <link rel="icon" href="/assets/icon-browser.PNG" />
-
+    <!-- ========CONTACT CSS========== -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/contact.css') }}">
+    <!-- ========NAVBAR CSS========== -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/navbar.css') }}">
+    <!-- ========FOOTER CSS========== -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/footer.css') }}">
+    <!-- ========RESPONSIVE CSS========== -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/responsive.css') }}">
+    <!-- ========DASHBOARD CSS========== -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/dashboard.css') }}">
     <!-- ==================BOOTSTRAP================== -->
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
@@ -37,21 +46,20 @@
   </head>
   <body>
     <div class="container-me">
+      {% block navbar %}
         {% include 'bar.html' %}
-        <!-- ================RECRUITE================== -->
-        <section class="recruite">
-
+      {% endblock %}
+        <main>
             {% block body %}
     
     
     
             {% endblock %}
-        </section>
-        <!-- ==================FIN RECRUITE==================== -->
+        </main>
     </div>
-        <!-- =================FOOTER============== -->
+
         {% include 'footer.html' %}
-        <!-- =================FIN FOOTER============== -->
+
 
 
     <script src="{{ url_for('static', filename='js/main.js') }}"></script>
