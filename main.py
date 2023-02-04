@@ -23,7 +23,7 @@ def candidate_form():
     return render_template('candidate_form.html')
 
 @app.route('/dashboard/id/classement')
-def classement():
+def classement(): 
     return render_template('/admin/classement.html')
 
 if __name__ == '__main__':
