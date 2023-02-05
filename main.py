@@ -1,11 +1,15 @@
 from bson import ObjectId
-from flask import Flask, make_response,render_template, request
-from pymongo import MongoClient
-from bson.binary import Binary
+from flask import Flask, make_response,render_template, request 
+from pymongo import MongoClient 
+from flask_pymongo import PyMongo
+from bson.binary import Binary 
+
 
 
 app = Flask(__name__)
-client = MongoClient("mongodb://localhost:27017")
+client = MongoClient("mongodb://localhost:27017/SmartRecruiter")
+app.config["MONGO_URI"] = "mongodb://localhost:27017/SmartRecruiter"
+mongo = PyMongo(app)
 db = client['SmartRecruiter']
 candidates_collection = db['job_applicants']
 
@@ -50,8 +54,7 @@ def submit():
         "cv": Binary(cv_data)
     }
     candidates_collection.insert_one(applicant)
-    # return "Job application submitted successfully!"
-    return db.candidates_collection.find()
+    return "Job application submitted successfully!"
 
 # ===================FIN SUBMIT CANDIDT ==================
 # =============DOWNLOAD CV===============
@@ -71,7 +74,7 @@ def download_cv(id):
 
 @app.route("/candidates", methods=["GET"])
 def view_candidates():
-    candidateso = list(db.candidates_collection.find())
+    candidateso = mongo.db.job_applicants.find()
     return render_template("candidates.html", candidates=candidateso)
 
 
