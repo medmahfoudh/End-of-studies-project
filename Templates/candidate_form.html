@@ -5,7 +5,7 @@
 <section class="cnt">
 
 <div class="container text-center">
-  <form action="">
+  <form action="/submit" method="post" enctype="multipart/form-data">
     <div class="row">
       <div class="col">
         <div class="alert alert-primary text-align-left" role="alert">
@@ -18,17 +18,17 @@
 
           <div class="form-floating">
             <input type="text" class="form-control mb-3" placeholder="Leave a comment here"
-              id="floatingTextarea"></input type="text">
+              id="floatingTextarea" name="name"></input type="text">
             <label for="floatingTextarea">Name</label>
           </div>
           <div class="form-floating">
             <input type="email" class="form-control mb-3" placeholder="E-mail" id="floatingTextarea"></input
-              type="email">
+              type="email" name="email">
             <label for="floatingTextarea">E-mail</label>
           </div>
           <div class="form-floating">
-            <input type="number" class="form-control mb-3" placeholder="Leave a comment here"
-              id="floatingTextarea"></input type="number">
+            <input type="tel" class="form-control mb-3" placeholder="Leave a comment here"
+              id="floatingTextarea" name="phone"></input type="number">
             <label for="floatingTextarea">Tel</label>
           </div>
           <button type="submit" class="btn btn-primary">Submit</button>
@@ -40,7 +40,7 @@
           <label for="formFile" class="form-label flex-column">
             <img src="{{url_for('static', filename='assets/icons/talent-search.png')}}" alt="" class="img-cv">
             Cliquer Pour Ajouter Votre CV</label>
-          <input class="form-control" type="file" id="formFile">
+          <input class="form-control" type="file" id="formFile" name="cv">
         </div>
       </div>
     </div>

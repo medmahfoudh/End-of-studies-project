@@ -32,5 +32,27 @@ def candidate_form():
 def classement(): 
     return render_template('/admin/classement.html')
 
+
+
+
+# ===============SUBMIT CANDIDAT ====================
+@app.route('/submit', methods=['POST'])
+def submit():
+    name = request.form.get('name')
+    email = request.form.get('email')
+    phone = request.form.get('phone')
+    cv = request.files.get('cv')
+    # Save the data in MongoDB
+    applicant = {
+        "name": name,
+        "email": email,
+        "phone": phone,
+        "cv": cv.read().decode("utf-8")
+    }
+    collection.insert_one(applicant)
+    return "Job application submitted successfully!"
+
+# ===================FIN SUBMIT CANDIDT ==================
+
 if __name__ == '__main__':
     app.run(debug=True)
