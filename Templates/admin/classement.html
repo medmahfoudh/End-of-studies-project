@@ -6,22 +6,24 @@
 
     <table class="table table-striped">
         <thead>
-
             <tr>
                 <th scope="col" >Range</th>
                 <th scope="col">Name</th>
                 <th scope="col">E-mail</th>
+                <th scope="col">Phone</th>
                 <th scope="col">CV</th>
                 <th scope="col">Note</th>
             </tr>
         </thead>
         <tbody>
-            {% for candidate in candidateso %}
+            {% for candidate in candidates %}
             <tr>
+                <td>{{ 1 }}</td>
                 <td>{{ candidate.name }}</td>
                 <td>{{ candidate.email }}</td>
-                <td>{{ candidate.phone_number }}</td>
-                <td><a href="{{ url_for('download_cv', id=candidate._id) }}">Download CV</a></td>
+                <td>{{ candidate.phone }}</td>
+                <td><a class="btn btn-primary" href="{{ url_for('download_cv', id=candidate._id) }}">Download CV</a></td>
+                <td>88</td>
             </tr>
             {% endfor %}
         </tbody>

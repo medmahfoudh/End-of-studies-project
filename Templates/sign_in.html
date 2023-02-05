@@ -7,21 +7,21 @@
   <div class="alert alert-primary align-baseline w-50" role="alert">
     Pour Vous connecter en tant qu'administrateur, entrez votre adresse e-mail et votre mot de passe
   </div>
-  <form class="w-50">
+  <form class="w-50" method="post">
     <div class="form-floating mb-3">
-        <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com" aria-describedby="long-input">
-        <label for="floatingInput">Email address</label>
+        <input type="text" class="form-control" id="name" name="name" placeholder="Name" aria-describedby="long-input" required>
+        <label for="name">Name</label>
         <div style="width: 500px;" class="long-input"></div>
       </div>
       <div class="form-floating mb-3">
-        <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
-        <label for="floatingPassword">Password</label>
+        <input type="password" class="form-control" id="password" name="password" placeholder="Password" required>
+        <label for="password">Password</label>
       </div>
       <div class="mb-3 form-check">
         <input type="checkbox" class="form-check-input" id="exampleCheck1">
         <label class="form-check-label" for="exampleCheck1">Check me out</label>
       </div>
-      <a href="/dashboard" class="btn btn-primary">Submit</a>
+      <button type="submit" class="btn btn-primary">Submit</button>
   </form>
 </section>
 

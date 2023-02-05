@@ -18,32 +18,35 @@
   </div>
   <!-- CARDS FOR PC -->
   <!-- ===============NODE JS CARD============ -->
+  {% for offer in jobs_offers %}
   <div class="card mb-3 w-75 crd-pc">
     <div class="row g-0 hv-cards-recruite">
       <div class="col-md-4 flex-column w-25">
         <img
-          src="{{url_for('static' , filename='/assets/icons/node-js.png')}}"
+          src="data:image/png;base64,{{ offer['job_image'] }}"
           class="img-fluid rounded-start w-50 text-center"
           alt="..."
         />
       </div>
       <div class="col-md-8">
         <div class="card-body">
-          <h5 class="card-title fw-bold">FULL STACk DEVELOPPER</h5>
+          <h5 class="card-title fw-bold">{{ offer.job_name }}</h5>
           <p class="card-text">
             Required Skills:
           </p>
+          
           <div class="required-skills">
-  
-            <span class="badge text-bg-warning">JavaScript</span>
-            <span class="badge text-bg-warning">TypeScript</span>
+            {% for i in offer.required_skills %}
+            <span class="badge text-bg-warning">{{ i }}</span>
+            {% endfor %}
+            <!-- <span class="badge text-bg-warning">TypeScript</span>
             <span class="badge text-bg-warning">Python</span>
             <span class="badge text-bg-warning">Node.Js</span>
             <span class="badge text-bg-warning">Angular</span>
             <span class="badge text-bg-warning">Express.Js</span>
             <span class="badge text-bg-warning">MongoDB</span>
             <span class="badge text-bg-warning">Cloud Platforms</span>
-            <span class="badge text-bg-warning">DataBases</span> 
+            <span class="badge text-bg-warning">DataBases</span>  -->
           </div>
     
           <a href="/candidate_form" class="btn btn-outline-primary"> Cliquer Pour déposer Votre Dossier</a>
@@ -52,8 +55,9 @@
       </div>
     </div>
   </div>
+  {% endfor %}
   <!-- ==============PYTHON DEVELOPPER CARD=============== -->
-  <div class="card mb-3 w-75 crd-pc">
+  <!-- <div class="card mb-3 w-75 crd-pc">
     <div class="row g-0 hv-cards-recruite">
       <div class="col-md-4 flex-column w-25">
         <img
@@ -85,9 +89,9 @@
         
       </div>
     </div>
-  </div>
+  </div> -->
   <!-- ==========GRAPHIC DESIGNER=========== -->
-  <div class="card mb-3 w-75 crd-pc">
+  <!-- <div class="card mb-3 w-75 crd-pc">
     <div class="row g-0 hv-cards-recruite">
       <div class="col-md-4 flex-column w-25">
         <img
@@ -120,9 +124,9 @@
         
       </div>
     </div>
-  </div>
+  </div> -->
   <!-- ================DATA ANALYST=============== -->
-  <div class="card mb-3 w-75 crd-pc">
+  <!-- <div class="card mb-3 w-75 crd-pc">
     <div class="row g-0 hv-cards-recruite">
       <div class="col-md-4 flex-column w-25">
         <img
@@ -155,10 +159,10 @@
         
       </div>
     </div>
-  </div>
+  </div> -->
   <!-- FIN CARDS FOR PC -->
   <!-- CARDS FOR PHONE -->
-  <div class="card crd-phone flex-column mb-3" style="width: 18rem">
+  <!-- <div class="card crd-phone flex-column mb-3" style="width: 18rem">
     <img
       src="/assets/icons/node-js.png"
       class="card-img-top w-25"
@@ -256,5 +260,5 @@
         >
       </p>
     </div>
-  </div>
+  </div> -->
 </section>

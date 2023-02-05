@@ -135,6 +135,27 @@ a {
 
 /* ===============FIN PUT CANDIDATE FORM ======================= */
 
+/* =====================ADD JOB==================== */
+.job-image{
+  background-color: #5641ff21;
+  border-radius: 10px;
+  padding: 10px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  align-items: center;
+}
+.job-image:hover{
+  background: #5641ff33;
+}
+.job-logo{
+  width: 20%;
+  border: dashed 2px #5641ff6e;
+  border-radius: 10px;
+}
+/* ===================FIN ADD JOB=================== */
+
 /* ========================JOB OFFER=============================== */
 .required-skills {
   margin-bottom: 10px;

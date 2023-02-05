@@ -5,7 +5,7 @@
     <nav>
 
         <ul>
-            <li class="bar-admin" >Bonjour <span class="badge text-bg-warning nom-admin"><b>{Nom Admin}</b></span></li>
+            <li class="bar-admin" >Bonjour <span class="badge text-bg-warning nom-admin"><b>{{name}}</b></span></li>
         </ul>
     </nav>
 
@@ -63,5 +63,30 @@
 {% endblock %}
 
 {% block body %}
+<secttion class="cnt">
 
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col" >Offre d'emploi</th>
+        <th scope="col">Classement</th>
+        <th scope="col">Edit</th>
+        <th scope="col">Delete</th>
+  
+    </tr>
+    </thead>
+    <tbody>
+      {% for job in jobs %}
+      <tr>
+        <td> <button class="btn btn-loght">{{job.job_name}}</button></td>
+        <td><a href="/dashboard/classement" class="btn btn-primary"> Afficher le classement</a></td>
+        <td><button class="btn btn-warning">Edit</button></td>
+        <td><button class="btn btn-danger"> Delete</button></td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  
+  </table>
+  <a href="/dashboard/add_job" class="btn btn-primary">Ajouter un offre d'emploi</a>
+</secttion>
 {% endblock %}
