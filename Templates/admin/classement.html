@@ -5,41 +5,28 @@
 <div class="table-classement ">
 
     <table class="table table-striped">
-        <tr>
-            <th scope="col" >Range</th>
-            <th scope="col">Name</th>
-            <th scope="col">E-mail</th>
-            <th scope="col">CV</th>
-            <th scope="col">Note</th>
-        </tr>
-        <tr>
-            <th scope="row">1</th>
-            <td>Candidat 1</td>
-            <td>candidat1@gmail.com</td>
-            <td>cv.pdf</td>
-            <td class="table-success" >89</td>
-        </tr>
-        <tr>
-            <th scope="row">2</th>
-            <td>Candidat 2</td>
-            <td>candidat2@gmail.com</td>
-            <td>cv.pdf</td>
-            <td class="table-warning">76</td>
-        </tr>
-        <tr>
-            <th scope="row">3</th>
-            <td>Candidat 3</td>
-            <td>candidat3@gmail.com</td>
-            <td>cv.pdf</td>
-            <td class="table-warning">62</td>
-        </tr>
-        <tr>
-            <th scope="row">4</th>
-            <td>Candidat 4</td>
-            <td>candidat4@gmail.com</td>
-            <td>cv.pdf</td>
-            <td class="table-danger">32</td>
-        </tr>
+        <thead>
+
+            <tr>
+                <th scope="col" >Range</th>
+                <th scope="col">Name</th>
+                <th scope="col">E-mail</th>
+                <th scope="col">CV</th>
+                <th scope="col">Note</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for candidate in candidateso %}
+            <tr>
+                <td>{{ candidate.name }}</td>
+                <td>{{ candidate.email }}</td>
+                <td>{{ candidate.phone_number }}</td>
+                <td><a href="{{ url_for('download_cv', id=candidate._id) }}">Download CV</a></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+
+
     </table>
 </div>
 {% endblock %}

@@ -1,12 +1,13 @@
-from flask import Flask,render_template, request
+from bson import ObjectId
+from flask import Flask, make_response,render_template, request
 from pymongo import MongoClient
-import chardet 
+from bson.binary import Binary
 
 
 app = Flask(__name__)
 client = MongoClient("mongodb://localhost:27017")
 db = client['SmartRecruiter']
-collection = db['job_applicants']
+candidates_collection = db['job_applicants']
 
 
 @app.route('/')
@@ -29,9 +30,6 @@ def contact():
 def candidate_form():
     return render_template('candidate_form.html')
 
-@app.route('/dashboard/id/classement')
-def classement(): 
-    return render_template('/admin/classement.html')
 
 
 
@@ -43,17 +41,39 @@ def submit():
     email = request.form.get('email')
     phone = request.form.get('phone')
     cv = request.files.get('cv')
+    cv_data = cv.read()
     # Save the data in MongoDB
     applicant = {
         "name": name,
         "email": email,
         "phone": phone,
-        "cv": cv.read().decode("ISO-8859-1")
+        "cv": Binary(cv_data)
     }
-    collection.insert_one(applicant)
-    return "Job application submitted successfully!"
+    candidates_collection.insert_one(applicant)
+    # return "Job application submitted successfully!"
+    return db.candidates_collection.find()
 
 # ===================FIN SUBMIT CANDIDT ==================
+# =============DOWNLOAD CV===============
+@app.route('/dashboard/classement' , methods=["GET"])
+def classement(): 
+    candidates = db.candidates_collection.find()
+    return render_template("/admin/classement.html", candidates=candidates)
+
+
+@app.route("/dashboard/classement/<id>/cv", methods=["GET"])
+def download_cv(id):
+    candidate = db.candidates.find_one({"_id": ObjectId(id)})
+    cv_data = candidate["cv"]
+    response = make_response(cv_data)
+    response.headers["Content-Disposition"] = "attachment; filename=cv.pdf"
+    return response
+
+@app.route("/candidates", methods=["GET"])
+def view_candidates():
+    candidateso = list(db.candidates_collection.find())
+    return render_template("candidates.html", candidates=candidateso)
+
 
 if __name__ == '__main__':
     app.run(debug=True)
