@@ -1,11 +1,12 @@
-from flask import Flask,render_template
+from flask import Flask,render_template, request
 from pymongo import MongoClient
+import chardet 
 
 
 app = Flask(__name__)
 client = MongoClient("mongodb://localhost:27017")
 db = client['SmartRecruiter']
-collection = db['job_applicant']
+collection = db['job_applicants']
 
 
 @app.route('/')
@@ -47,7 +48,7 @@ def submit():
         "name": name,
         "email": email,
         "phone": phone,
-        "cv": cv.read().decode("utf-8")
+        "cv": cv.read().decode("ISO-8859-1")
     }
     collection.insert_one(applicant)
     return "Job application submitted successfully!"
