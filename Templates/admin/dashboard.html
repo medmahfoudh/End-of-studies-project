@@ -68,17 +68,18 @@
   <table class="table table-striped">
     <thead>
       <tr>
-        <th scope="col" >Offre d'emploi</th>
-        <th scope="col">Classement</th>
-        <th scope="col">Edit</th>
-        <th scope="col">Delete</th>
+        <h1>Offres d'emploi</h1>
+        <!-- <th scope="col" ></th>
+        <th scope="col"></th>
+        <th scope="col">Offre d'emploi</th>
+        <th scope="col"></th> -->
   
     </tr>
     </thead>
     <tbody>
       {% for job in jobs %}
       <tr>
-        <td> <button class="btn btn-loght">{{job.job_name}}</button></td>
+        <td> <button class="btn btn-loght"> <b> {{job.job_name}} </b></button></td>
         <td><a href="/dashboard/classement" class="btn btn-primary"> Afficher le classement</a></td>
         <td><button class="btn btn-warning">Edit</button></td>
         <td><button class="btn btn-danger"> Delete</button></td>
