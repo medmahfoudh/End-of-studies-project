@@ -1,4 +1,36 @@
 {% extends 'layout.html' %}
+{% block navbar %}
+<div class="navbar-me">
+    <nav>
+
+        <ul>
+            <li class="hv" ><a href="/dashboard">BACK</a></li>
+        </ul>
+    </nav>
+
+    <div class="menu-me">
+      <nav>
+
+        <!-- ===============NAV BAR FOR PHONE============= -->
+        <div class="links">
+          <ul>
+            <li><a href="#home">HOME</a></li>
+            <li><a href="#services">SERVICES</a></li>
+            <li><a href="#values">OUR VALUES</a></li>
+            <li><a href="#vision">OUR VISION</a></li>
+            <li><a href="#recruite">RECRUITE</a></li>
+            <li><a href="#contact">CONTACT</a></li>
+          </ul>
+        </div>
+        <div class="hamburger-menu">
+          <div class="bar"></div>
+        </div>
+        <!-- ===============NAV BAR FOR PHONE============= -->
+      </nav>
+    </div>
+</div>
+
+{% endblock %}
 {% block body %}
 
 <sectio class="cnt p-3">
