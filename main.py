@@ -52,50 +52,35 @@ def contact():
 
 @app.route('/candidate_form/<job_id>' , methods=['GET', 'POST'])
 def candidate_form(job_id):
+    global global_job_id
+    global_job_id = job_id
     job_id = mongo.db.jobs.find_one({"_id": ObjectId(job_id) })
-    return render_template(('candidate_form.html') , job_id=job_id)
+    return render_template(('candidate_form.html') , job_id=job_id )
 
-@app.route('/candidate_form/<job_id>/submit' , methods=['POST'])
-def add_candidate():
-    job_id = request.form.get("job_id")
-    name = request.form.get('name')
-    email = request.form.get('email')
-    phone = request.form.get('phone')
-    cv = request.files.get('cv')
-    cv_data = cv.read()
- 
-    job = mongo.db.jobs.find_one({"_id": ObjectId(job_id)})
-    # Save the data in MongoDB
-    applicant = {
-        "name": name,
-        "email": email,
-        "phone": phone,
-        "cv": Binary(cv_data)
-    }
-    mongo.db.jobs.update_one(
-        {"_id": ObjectId(job_id)},
-        {"$push": {"Job_applicants": applicant}}
-    )
-    return "Candidate added successfully"
+
 
 
 # ===============SUBMIT CANDIDAT ====================
 @app.route('/submit', methods=['POST'])
 def submit():
-    name = request.form.get('name')
-    email = request.form.get('email')
-    phone = request.form.get('phone')
-    cv = request.files.get('cv')
+    global_job_id
+    name = request.form['name']
+    email = request.form['email']
+    phone = request.form['phone']
+    cv = request.files['cv']
     cv_data = cv.read()
+
     # Save the data in MongoDB
-    applicant = {
+    job_applicant = {
         "name": name,
         "email": email,
         "phone": phone,
         "cv": Binary(cv_data)
     }
-    candidates_collection.insert_one(applicant)
-    return "Job application submitted successfully!"
+    job_collection.update_one(
+        {"_id": ObjectId(global_job_id)},
+        {"$push": {"job_applicants": job_applicant}})
+    return f"Job application submitted successfully!{global_job_id}"
 
 # ===================FIN SUBMIT CANDIDT ==================
 # =============DOWNLOAD CV===============
