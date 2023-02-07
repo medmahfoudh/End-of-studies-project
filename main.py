@@ -50,9 +50,10 @@ def dashboard():
 def contact():
     return render_template('contact.html')
 
-@app.route('/candidate_form')
-def candidate_form():
-    return render_template('candidate_form.html')
+@app.route('/candidate_form/<job_id>' , methods=['GET', 'POST'])
+def candidate_form(job_id):
+    job_id = mongo.db.jobs.find_one({"_id": ObjectId(job_id) })
+    return render_template(('candidate_form.html') , job_id=job_id)
 
 
 # ===============SUBMIT CANDIDAT ====================
