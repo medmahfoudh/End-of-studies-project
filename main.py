@@ -2,7 +2,8 @@ import base64
 from bson import ObjectId
 from flask import Flask, make_response, redirect,render_template, request, session, url_for 
 from pymongo import MongoClient 
-from flask_pymongo import PyMongo
+
+from flask_pymongo import PyMongo 
 from bson.binary import Binary 
 
 
@@ -80,21 +81,25 @@ def submit():
 
 # ===================FIN SUBMIT CANDIDT ==================
 # =============DOWNLOAD CV===============
-@app.route('/dashboard/classement' , methods=["GET"])
-def classement(): 
-    candidates = mongo.db.jobs.find({"_id": ObjectId('63e039fbfc053256d08709ea')})
+@app.route('/dashboard/classement/<id_job>' , methods=["GET"])
+def classement(id_job): 
+    candidates = mongo.db.jobs.find({"_id": ObjectId(id_job)})
     return render_template("/admin/classement.html", candidates=candidates)
 
 
 @app.route("/dashboard/classement/<id>/cv", methods=["GET"])
 def download_cv(id):
-    candidate = mongo.db.jobs.find({"job_applicants.candidat_id": ObjectId(id)})
-    
-    # cv_data = candidate["name"] 
-    # response = make_response(cv_data)
-    # response.headers["Content-Disposition"] = "attachment; filename=cv.pdf"
-    # return response
-    return f"test completed! {candidate}"
+    unwound_job_applicants = list(mongo.db.jobs.aggregate([
+    {"$unwind": "$job_applicants"},
+    {"$match":{"job_applicants.candidat_id": ObjectId(id)}},
+    {"$group":{"_id":"$job_applicants.cv"}}
+    ]))
+    cv_data = unwound_job_applicants[0]
+    cv_data = cv_data['_id']
+    response = make_response(cv_data)
+    response.headers["Content-Disposition"] = f"attachment; filename={id}.pdf"
+    return response
+    # return f"test completed! {cv_data}  "
 
 # ============AJOUTER LES OFFRES D'EMPLOI==================
 @app.route("/dashboard/add_job" )
