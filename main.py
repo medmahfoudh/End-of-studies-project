@@ -13,7 +13,7 @@ client = MongoClient("mongodb://localhost:27017/SmartRecruiter")
 app.config["MONGO_URI"] = "mongodb://localhost:27017/SmartRecruiter"
 mongo = PyMongo(app)
 db = client['SmartRecruiter']
-candidates_collection = db['job_applicants']
+# candidates_collection = db['job_applicants']
 job_collection = db['jobs']
 
 
@@ -33,12 +33,7 @@ def sign_in():
             return redirect(url_for("sign_in"))
     return render_template('sign_in.html')
 
-# @app.route("/protected_resource")
-# def protected_resource():
-#     if "admin" in session:
-#         return render_template('/admin/dashboard.html' )
-#     else:
-#         return redirect(url_for("sign_in"))
+
 
 
 @app.route('/dashboard' , methods = ["GET"])
@@ -61,7 +56,7 @@ def candidate_form(job_id):
 
 
 # ===============SUBMIT CANDIDAT ====================
-@app.route('/submit', methods=['POST'])
+@app.route('/candidate_form/submit', methods=['POST'])
 def submit():
     global_job_id
     name = request.form['name']
@@ -72,6 +67,7 @@ def submit():
 
     # Save the data in MongoDB
     job_applicant = {
+        "candidat_id":ObjectId(),
         "name": name,
         "email": email,
         "phone": phone,
@@ -86,17 +82,19 @@ def submit():
 # =============DOWNLOAD CV===============
 @app.route('/dashboard/classement' , methods=["GET"])
 def classement(): 
-    candidates = mongo.db.job_applicants.find()
+    candidates = mongo.db.jobs.find({"_id": ObjectId('63e039fbfc053256d08709ea')})
     return render_template("/admin/classement.html", candidates=candidates)
 
 
 @app.route("/dashboard/classement/<id>/cv", methods=["GET"])
 def download_cv(id):
-    candidate = mongo.db.job_applicants.find_one({"_id": ObjectId(id)})
-    cv_data = candidate["cv"]
-    response = make_response(cv_data)
-    response.headers["Content-Disposition"] = "attachment; filename=cv.pdf"
-    return response
+    candidate = mongo.db.jobs.find({"job_applicants.candidat_id": ObjectId(id)})
+    
+    # cv_data = candidate["name"] 
+    # response = make_response(cv_data)
+    # response.headers["Content-Disposition"] = "attachment; filename=cv.pdf"
+    # return response
+    return f"test completed! {candidate}"
 
 # ============AJOUTER LES OFFRES D'EMPLOI==================
 @app.route("/dashboard/add_job" )

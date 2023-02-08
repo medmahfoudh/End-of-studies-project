@@ -17,14 +17,17 @@
         </thead>
         <tbody>
             {% for candidate in candidates %}
+                
+            {% for job_candidat in candidate.job_applicants %}
             <tr>
                 <td>{{ 1 }}</td>
-                <td>{{ candidate.name }}</td>
-                <td>{{ candidate.email }}</td>
-                <td>{{ candidate.phone }}</td>
-                <td><a class="btn btn-primary" href="{{ url_for('download_cv', id=candidate._id) }}">Download CV</a></td>
-                <td>88</td>
+                <td>{{ job_candidat.name }}</td>
+                <td>{{ job_candidat.email }}</td>
+                <td>{{ job_candidat.phone }}</td>
+                <td><a class="btn btn-primary" href="{{ url_for('download_cv', id=job_candidat.candidat_id) }}">Download CV</a></td>
+                <td>91%</td>
             </tr>
+            {% endfor %}
             {% endfor %}
         </tbody>
 
