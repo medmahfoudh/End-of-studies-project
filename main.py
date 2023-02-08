@@ -108,7 +108,7 @@ def jobs():
 @app.route("/add_job" , methods = ["POST"])
 def add_job():
     job_name = request.form["job_name"]
-    required_skills = request.form["required_skills"].split()
+    required_skills = request.form["required_skills"].split(',')
     job_description = request.form["job_description"]
     job_image = request.files["job_image"]
     
