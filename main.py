@@ -81,9 +81,9 @@ def submit():
 
 # ===================FIN SUBMIT CANDIDT ==================
 # =============DOWNLOAD CV===============
-@app.route('/dashboard/classement/<id_job>' , methods=["GET"])
-def classement(id_job): 
-    candidates = mongo.db.jobs.find({"_id": ObjectId(id_job)})
+@app.route('/dashboard/classement/<id>' , methods=["GET"])
+def classement(id): 
+    candidates = mongo.db.jobs.find({"_id": ObjectId(id)})
     return render_template("/admin/classement.html", candidates=candidates)
 
 

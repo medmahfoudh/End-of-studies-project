@@ -80,7 +80,7 @@
       {% for job in jobs %}
       <tr>
         <td> <button class="btn btn-loght"> <b> {{job.job_name}} </b></button></td>
-        <td><a href="{{ url_for('classement', id_job=job._id) }}" class="btn btn-primary"> Afficher le classement</a></td>
+        <td><a href="{{ url_for('classement', id=job._id) }}" class="btn btn-primary"> Afficher le classement</a></td>
         <td><button class="btn btn-warning">Edit</button></td>
         <td><button class="btn btn-danger"> Delete</button></td>
       </tr>
