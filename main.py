@@ -41,6 +41,10 @@ def sign_in():
 def dashboard():
     jobs = mongo.db.jobs.find()
     return render_template('/admin/dashboard.html' , jobs = jobs )
+@app.after_request
+def after_request(response):
+    response.headers["Cache-Control"] = "no-cahe, no-store,must-revalidate" 
+    return response
 
 @app.route('/contact')
 def contact():
@@ -84,6 +88,7 @@ def submit():
 @app.route('/dashboard/classement/<id>' , methods=["GET"])
 def classement(id): 
     candidates = mongo.db.jobs.find({"_id": ObjectId(id)})
+    
     return render_template("/admin/classement.html", candidates=candidates)
 
 
@@ -132,6 +137,11 @@ def add_job():
 # redirect("/dashboard")
 
 # ============FIN AJOUTER LES OFFRES D'EMPLOI==================
+
+# =============AFTER REQUEST=============
+
+
+# =============FIN AFTER REQUEST=============
 
 if __name__ == '__main__':
     app.run(debug=True)
