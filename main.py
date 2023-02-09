@@ -26,10 +26,13 @@ def home():
 @app.route('/sign_in' , methods=["GET", "POST"])
 def sign_in():
     if request.method == "POST":
-        admin = mongo.db.admins.find_one({"name": request.form["name"], "password": request.form["password"]}) 
+        admin = mongo.db.admins.find_one({"name": request.form["name"], "password": request.form["password"]})
+        name_admin = request.form["name"]
+        global global_name_admin 
+        global_name_admin=  [name_admin]
         if admin:
             session["admin"] = True
-            return redirect(url_for("dashboard") )
+            return redirect(url_for("dashboard"))
         else:
             return redirect(url_for("sign_in"))
     return render_template('sign_in.html')
@@ -40,11 +43,12 @@ def sign_in():
 @app.route('/dashboard' , methods = ["GET"])
 def dashboard():
     jobs = mongo.db.jobs.find()
-    return render_template('/admin/dashboard.html' , jobs = jobs )
-@app.after_request
-def after_request(response):
-    response.headers["Cache-Control"] = "no-cahe, no-store,must-revalidate" 
-    return response
+    global_name_admin
+    return render_template('/admin/dashboard.html' , jobs = jobs , global_name_admin=global_name_admin[0])
+# @app.after_request
+# def after_request(response):
+#     response.headers["Cache-Control"] = "no-cahe, no-store,must-revalidate" 
+#     return response
 
 @app.route('/contact')
 def contact():
