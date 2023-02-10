@@ -34,11 +34,10 @@ def sign_in():
             session["admin"] = True
             isAdmin = True
             return render_template('/admin/dashboard.html' , name_admin=name_admin ,  jobs = jobs )
-            return redirect(url_for("dashboard"))
         else:
             isAdmin = False
             return render_template('sign_in.html' , isAdmin = isAdmin) 
-            return redirect(url_for("sign_in" ))
+
    
     return render_template('sign_in.html')
 
