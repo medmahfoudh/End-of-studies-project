@@ -30,11 +30,18 @@ def sign_in():
         name_admin = request.form["name"]
         global global_name_admin 
         global_name_admin=  [name_admin]
+        jobs = mongo.db.jobs.find()
+        isAdmin = True
         if admin:
             session["admin"] = True
+            isAdmin = True
+            return render_template('/admin/dashboard.html' , jobs = jobs )
             return redirect(url_for("dashboard"))
         else:
-            return redirect(url_for("sign_in"))
+            isAdmin = False
+            return render_template('sign_in.html' , isAdmin = isAdmin) 
+            return redirect(url_for("sign_in" ))
+   
     return render_template('sign_in.html')
 
 
