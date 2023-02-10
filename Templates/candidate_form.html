@@ -19,17 +19,17 @@
 
           <div class="form-floating">
             <input type="text" class="form-control mb-3" placeholder="Leave a comment here"
-              id="floatingTextarea" name="name"></input type="text">
+              id="floatingTextarea" name="name" required></input type="text">
             <label for="floatingTextarea">Name</label>
           </div>
           <div class="form-floating">
-            <input type="email" class="form-control mb-3" placeholder="E-mail" id="floatingTextarea" name="email">
-            </input type="email" >
+            <input type="email" class="form-control mb-3" placeholder="E-mail" id="floatingTextarea" name="email" required>
+            </input>
             <label for="floatingTextarea">E-mail</label>
           </div>
           <div class="form-floating">
             <input type="tel" class="form-control mb-3" placeholder="Leave a comment here"
-              id="floatingTextarea" name="phone"></input type="number">
+              id="floatingTextarea" name="phone" required></input type="number">
             <label for="floatingTextarea">Tel</label>
           </div>
           <button type="submit" class="btn btn-primary" value="Submit">Submit</button>
@@ -41,7 +41,7 @@
           <label for="formFile" class="form-label flex-column">
             <img src="{{url_for('static', filename='assets/icons/talent-search.png')}}" alt="" class="img-cv">
             Cliquer Pour Ajouter Votre CV</label>
-          <input class="form-control" type="file" id="formFile" name="cv">
+          <input class="form-control" type="file" id="formFile" name="cv" required>
         </div>
       </div>
     </div>

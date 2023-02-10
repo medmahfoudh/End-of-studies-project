@@ -28,14 +28,12 @@ def sign_in():
     if request.method == "POST":
         admin = mongo.db.admins.find_one({"name": request.form["name"], "password": request.form["password"]})
         name_admin = request.form["name"]
-        global global_name_admin 
-        global_name_admin=  [name_admin]
         jobs = mongo.db.jobs.find()
         isAdmin = True
         if admin:
             session["admin"] = True
             isAdmin = True
-            return render_template('/admin/dashboard.html' , jobs = jobs )
+            return render_template('/admin/dashboard.html' , name_admin=name_admin ,  jobs = jobs )
             return redirect(url_for("dashboard"))
         else:
             isAdmin = False
@@ -50,8 +48,7 @@ def sign_in():
 @app.route('/dashboard' , methods = ["GET"])
 def dashboard():
     jobs = mongo.db.jobs.find()
-    global_name_admin
-    return render_template('/admin/dashboard.html' , jobs = jobs , global_name_admin=global_name_admin[0])
+    return render_template('/admin/dashboard.html' , jobs = jobs )
 # @app.after_request
 # def after_request(response):
 #     response.headers["Cache-Control"] = "no-cahe, no-store,must-revalidate" 
