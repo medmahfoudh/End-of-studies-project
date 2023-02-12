@@ -37,8 +37,6 @@ def sign_in():
         else:
             isAdmin = False
             return render_template('sign_in.html' , isAdmin = isAdmin) 
-
-   
     return render_template('sign_in.html')
 
 
