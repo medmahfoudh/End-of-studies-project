@@ -36,7 +36,7 @@ def sign_in():
             return render_template('/admin/dashboard.html' , name_admin=name_admin ,  jobs = jobs )
         else:
             isAdmin = False
-            return render_template('sign_in.html' , isAdmin = isAdmin) 
+            return render_template('sign_in.html' , isAdmin = isAdmin)
     return render_template('sign_in.html')
 
 
