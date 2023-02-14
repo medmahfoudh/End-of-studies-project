@@ -3,67 +3,37 @@
 <div class="navbar-me">
   <nav>
 
-    <ul>
-        <li class="hv" ><a href="/dashboard">BACK</a></li>
-    </ul>
-</nav>
+      <ul>
+          <li class="hv" ><a href="/dashboard">BACK</a></li>
+      </ul>
+  </nav>
 
-    <div class="menu-me">
-      <nav>
+  <div class="menu-me">
+    <nav>
+
+      <!-- ===============NAV BAR FOR PHONE============= -->
+      <div class="links">
         <ul>
-          <!-- <li class="hv"><a href="/">JOB OFFER</a></li> -->
-          <li class="hv"><a href="/sign_in">SING OUT</a></li>
-          <li class="hv"><a href="/dashboard/add_job">AJOUTER UN OFFRE D'EMPLOI</a></li>
-          <li>
-            <div class="dropdown p-md-0">
-              <button
-                class="btn btn-lang btn-primary dropdown-toggle p-md-1 lang"
-                type="button"
-                data-bs-toggle="dropdown"
-                aria-expanded="false"
-              >
-                <span class="material-symbols-outlined"> translate </span>
-                FR
-              </button>
-              <ul class="dropdown-menu flex-lg-column">
-                <li>
-                  <button class="dropdown-item" type="button">
-                    AR (En Cours)
-                  </button>
-                </li>
-                <li>
-                  <button class="dropdown-item" type="button">
-                    EN (En Cours)
-                  </button>
-                </li>
-              </ul>
-            </div>
-          </li>
+          <li><a href="#home">HOME</a></li>
+          <li><a href="#services">SERVICES</a></li>
+          <li><a href="#values">OUR VALUES</a></li>
+          <li><a href="#vision">OUR VISION</a></li>
+          <li><a href="#recruite">RECRUITE</a></li>
+          <li><a href="#contact">CONTACT</a></li>
         </ul>
-        <!-- ===============NAV BAR FOR PHONE============= -->
-        <div class="links">
-          <ul>
-            <li><a href="#home">HOME</a></li>
-            <li><a href="#services">SERVICES</a></li>
-            <li><a href="#values">OUR VALUES</a></li>
-            <li><a href="#vision">OUR VISION</a></li>
-            <li><a href="#recruite">RECRUITE</a></li>
-            <li><a href="#contact">CONTACT</a></li>
-          </ul>
-        </div>
-        <div class="hamburger-menu">
-          <div class="bar"></div>
-        </div>
-        <!-- ===============NAV BAR FOR PHONE============= -->
-      </nav>
-    </div>
+      </div>
+      <div class="hamburger-menu">
+        <div class="bar"></div>
+      </div>
+      <!-- ===============NAV BAR FOR PHONE============= -->
+    </nav>
+  </div>
 </div>
-
 {% endblock %}
 {% block body %}
 
 <div class="table-classement ">
-
+    <p class="text-center ">Classement des candidats à l'emploi</p>
     <table class="table table-striped">
         <thead>
             <tr>
