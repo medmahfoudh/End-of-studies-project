@@ -5,3 +5,7 @@
 nav ul li .nom-admin{
     padding: 10px;
 }
+
+.modal-dialog{
+    z-index: 1000 !important;
+}

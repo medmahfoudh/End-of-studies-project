@@ -81,13 +81,19 @@
       <tr>
         <td> <button class="btn btn-loght"> <b> {{job.job_name}} </b></button></td>
         <td><a href="{{ url_for('classement', id=job._id) }}" class="btn btn-primary"> Afficher le classement</a></td>
-        <td><button class="btn btn-warning">Edit</button></td>
-        <td><button class="btn btn-danger"> Delete</button></td>
+        <td><a class="btn btn-warning">Edit</a></td>
+        <td>
+          <form action="{{ url_for('delete_job', job_id=job._id) }}" method="POST">
+            <button class="btn btn-danger" type="submit">Delete</button>
+          </form>
+        </td>
+
       </tr>
       {% endfor %}
     </tbody>
   
   </table>
   <a href="/dashboard/add_job" class="btn btn-primary">Ajouter un offre d'emploi</a>
+  
 </secttion>
 {% endblock %}

@@ -93,8 +93,8 @@ def submit():
 @app.route('/dashboard/classement/<id>' , methods=["GET"])
 def classement(id): 
     candidates = mongo.db.jobs.find({"_id": ObjectId(id)})
-    
-    return render_template("/admin/classement.html", candidates=candidates)
+    jn = candidates[0]['job_name']
+    return render_template("/admin/classement.html", candidates=candidates , jn=jn)
 
 
 @app.route("/dashboard/classement/<id>/cv", methods=["GET"])
@@ -138,10 +138,18 @@ def add_job():
 
     # Insert the job document into the collection
     job_collection.insert_one(job)
-    return "<h1>Job Added!</h1>"
+    jobs = mongo.db.jobs.find()
+    return render_template('/admin/dashboard.html' , jobs = jobs)
 # redirect("/dashboard")
 
 # ============FIN AJOUTER LES OFFRES D'EMPLOI==================
+# ===============SUPPRIMER L'OFFRE D'EMPLOI====================
+@app.route('/delete_job/<job_id>', methods=['POST','DELETE'])
+def delete_job(job_id):
+    mongo.db.jobs.delete_one({'_id': ObjectId(job_id)})
+    jobs = mongo.db.jobs.find()
+    return render_template('/admin/dashboard.html' , jobs = jobs)
+# ===============FIN SUPPRIMER L'OFFRE D'EMPLOI====================
 
 # =============AFTER REQUEST=============
 
