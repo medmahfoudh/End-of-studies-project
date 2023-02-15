@@ -150,7 +150,9 @@ def delete_job(job_id):
     jobs = mongo.db.jobs.find()
     return render_template('/admin/dashboard.html' , jobs = jobs)
 # ===============FIN SUPPRIMER L'OFFRE D'EMPLOI====================
-
+@app.route('/test')
+def test():
+    return render_template('submit.html')
 # =============AFTER REQUEST=============
 
 
