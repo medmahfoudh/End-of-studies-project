@@ -81,7 +81,49 @@
       <tr>
         <td> <button class="btn btn-loght"> <b> {{job.job_name}} </b></button></td>
         <td><a href="{{ url_for('classement', id=job._id) }}" class="btn btn-primary"> Afficher le classement</a></td>
-        <td><a class="btn btn-warning">Edit</a></td>
+        <td>
+          <form action="{{url_for('modify_job' , job_id = job._id)}}" method="POST" enctype="multipart/form-data">
+            <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#EditModal{{job._id}}">Edit</button>
+            <div class="modal fade" id="EditModal{{job._id}}" tabindex="0" aria-labelledby="exampleModalLabel" aria-hidden="true">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Modifier <b>{{job.job_name}}</b></h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body">
+                    <div class="form-floating">
+                      <input type="text" class="form-control mb-3" placeholder="Job Name"
+                      id="job_name" name="job_name" value="{{job.job_name}}"></input type="text">
+                      <label for="job_name">Job Name</label>
+                      </div>
+                      <div class="form-floating"> 
+                          <input type="text" class="form-control mb-3" id="required_skills" name="required_skills" placeholder="Job Name" value="{{job.required_skills}}">
+                          <label for="required_skills">Required Skills</label>
+                      </div>
+                      <div class="form-floating">
+                          <textarea id="job_description" class="form-control mb-3" name="job_description" placeholder="{{job.job_description}}"  value="{{job.job_description}}"></textarea>
+                          <label for="job_description">Job Description</label>
+                      </div>
+                      <div class="job-image mb-3">
+                        <label for="job_image">
+                          <img src="{{url_for('static', filename='assets/icons/logo.png')}}" alt="" class="job-logo"> <br>
+                          <b>Cliquer Pour Ajouter Le Logo de l'emploi (PNG)</b> 
+                      </label>
+                        <input type="file" class="form-control" id="job_image" name="job_image" accept="image/png" >
+                      </div>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
+                    <button class="btn btn-warning" type="submit">Modidfier</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+
+          </form>
+        </td>
         <td>
           <form action="{{ url_for('delete_job', job_id=job._id) }}" method="POST">
               <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#DeleteModal{{job._id}}">Supprimer</button>

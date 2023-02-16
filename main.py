@@ -150,6 +150,33 @@ def delete_job(job_id):
 
     return render_template('/admin/dashboard.html' , jobs = jobs )
 # ===============FIN SUPPRIMER L'OFFRE D'EMPLOI====================
+# ===============EDIT L'OFFRE D'EMPLOI====================
+@app.route('/edit_job/<job_id>' , methods = ['POST'])
+def modify_job(job_id):
+    # mongo.db.jobs.find_one({'_id':ObjectId(job_id)})
+    job_name = request.form['job_name']
+    required_skills = request.form['required_skills'].split(',')
+    job_description = request.form['job_description']
+    job_image = request.files['job_image']
+    if job_image:
+        image_string = job_image.read()
+        encoded_image = base64.b64encode(image_string).decode('utf-8')
+    else:
+        encoded_image = None
+    db.jobs.update_one(
+        {'_id': ObjectId(job_id)},
+        {'$set': {
+            'job_name': job_name,
+            'required_skills': required_skills,
+            'job_description': job_description,
+            'job_image': encoded_image
+        }}
+    )
+    jobs = mongo.db.jobs.find()
+    return render_template('/admin/dashboard.html' , jobs = jobs )
+
+
+# ===============FIN EDIT L'OFFRE D'EMPLOI====================
 
 # =============AFTER REQUEST=============
 
