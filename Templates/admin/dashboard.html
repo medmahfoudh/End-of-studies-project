@@ -13,7 +13,7 @@
       <nav>
         <ul>
           <!-- <li class="hv"><a href="/">JOB OFFER</a></li> -->
-          <li class="hv"><a href="/sign_in">SING OUT</a></li>
+          <li class="hv"><a href="/sign_in">Se déconnecter</a></li>
           <li class="hv"><a href="/dashboard/add_job">AJOUTER UN OFFRE D'EMPLOI</a></li>
           <li>
             <div class="dropdown p-md-0">
@@ -84,9 +84,27 @@
         <td><a class="btn btn-warning">Edit</a></td>
         <td>
           <form action="{{ url_for('delete_job', job_id=job._id) }}" method="POST">
-            <button class="btn btn-danger" type="submit">Delete</button>
+              <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#DeleteModal{{job._id}}">Supprimer</button>
+              <div class="modal fade" id="DeleteModal{{job._id}}" tabindex="0" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h1 class="modal-title fs-5" id="exampleModalLabel">Supprimer l'emploi <b>{{job.job_name}}</b></h1>
+                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                      Voulez-vous vraiment supprimer cette Offre d'emploi?
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
+                      <button class="btn btn-danger" type="submit">Supprimer</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
           </form>
         </td>
+
 
       </tr>
       {% endfor %}

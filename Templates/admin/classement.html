@@ -38,9 +38,9 @@
         <thead>
             <tr>
                 <th scope="col" >Range</th>
-                <th scope="col">Name</th>
+                <th scope="col">Nom</th>
                 <th scope="col">E-mail</th>
-                <th scope="col">Phone</th>
+                <th scope="col">Tel</th>
                 <th scope="col">CV</th>
                 <th scope="col">Note</th>
             </tr>
@@ -55,7 +55,7 @@
                 <td>{{ job_candidat.email }}</td>
                 <td>{{ job_candidat.phone }}</td>
                 <td><a class="btn btn-primary" href="{{ url_for('download_cv', id=job_candidat.candidat_id) }}">Download CV</a></td>
-                <td>91%</td>
+                <td><span class="badge text-bg-primary">bientôt</span></td>
             </tr>
             {% endfor %}
             {% endfor %}

@@ -54,9 +54,9 @@ main {
   background: #fff;
   margin-top: 5rem;
   border-radius: 16px;
-  overflow: hidden;
+  /* overflow: hidden; */
   /* padding:10px ; */
-  z-index: 0;
+  /* z-index: 0; */
 }
 .cnt{
   width: 100%;

@@ -28,7 +28,9 @@ def sign_in():
     if request.method == "POST":
         admin = mongo.db.admins.find_one({"name": request.form["name"], "password": request.form["password"]})
         name_admin = request.form["name"]
+        global_name_admin = name_admin
         jobs = mongo.db.jobs.find()
+        global_jobs = jobs
         isAdmin = True
         if admin:
             session["admin"] = True
@@ -36,6 +38,7 @@ def sign_in():
             return render_template('/admin/dashboard.html' , name_admin=name_admin ,  jobs = jobs )
         else:
             isAdmin = False
+
             return render_template('sign_in.html' , isAdmin = isAdmin)
     return render_template('sign_in.html')
 
@@ -61,10 +64,6 @@ def candidate_form(job_id):
     global_job_id = job_id
     job_id = mongo.db.jobs.find_one({"_id": ObjectId(job_id) })
     return render_template(('candidate_form.html') , job_id=job_id )
-
-
-
-
 # ===============SUBMIT CANDIDAT ====================
 @app.route('/candidate_form/submit', methods=['POST'])
 def submit():
@@ -86,8 +85,8 @@ def submit():
     job_collection.update_one(
         {"_id": ObjectId(global_job_id)},
         {"$push": {"job_applicants": job_applicant}})
-    return f"Job application submitted successfully!{global_job_id}"
-
+    return render_template('success_add_candidat.html')
+    # return f"Job application submitted successfully!
 # ===================FIN SUBMIT CANDIDT ==================
 # =============DOWNLOAD CV===============
 @app.route('/dashboard/classement/<id>' , methods=["GET"])
@@ -121,14 +120,14 @@ def add_job():
     required_skills = request.form["required_skills"].split(',')
     job_description = request.form["job_description"]
     job_image = request.files["job_image"]
-    
+
     if job_image:
         image_string = job_image.read()
         encoded_image = base64.b64encode(image_string).decode('utf-8')
     else:
         encoded_image = None
 
-    # Create a new job document
+
     job = {
         "job_name": job_name,
         "required_skills": required_skills,
@@ -136,11 +135,11 @@ def add_job():
         "job_image": encoded_image
     }
 
-    # Insert the job document into the collection
+
     job_collection.insert_one(job)
     jobs = mongo.db.jobs.find()
+
     return render_template('/admin/dashboard.html' , jobs = jobs)
-# redirect("/dashboard")
 
 # ============FIN AJOUTER LES OFFRES D'EMPLOI==================
 # ===============SUPPRIMER L'OFFRE D'EMPLOI====================
@@ -148,7 +147,8 @@ def add_job():
 def delete_job(job_id):
     mongo.db.jobs.delete_one({'_id': ObjectId(job_id)})
     jobs = mongo.db.jobs.find()
-    return render_template('/admin/dashboard.html' , jobs = jobs)
+
+    return render_template('/admin/dashboard.html' , jobs = jobs )
 # ===============FIN SUPPRIMER L'OFFRE D'EMPLOI====================
 @app.route('/test')
 def test():
