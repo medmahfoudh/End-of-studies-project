@@ -80,9 +80,12 @@ def submit():
     resume = ResumeParser(cv_io).get_extracted_data()
 
     #Model De Classification les CVs
+    get_required_skills = mongo.db.jobs.find_one({"_id":ObjectId(global_job_id)})
+    lower_required_skills = ' '.join(get_required_skills['required_skills']).lower()
+    lower_candidat_skills = ' '.join(resume['skills']).lower()
+    list_candidat_skills = lower_candidat_skills.split(' ')
 
-    list_candidat_skills = resume['skills']
-    list_required_skills = ['Analytics', 'Python', 'Php', 'Tkinter', 'Java', 'Adobe', 'Sql', 'Mysql', 'Html', 'C++', 'Js', 'Css', 'Javascript', 'Matplotlib', 'Illustrator', 'Nosql', 'Flask', 'Apis','Website','Sql','Engineering','French','Unix','Datasets','Training','Math','C++','Ai','Linux']
+    list_required_skills = lower_required_skills.split(' ')
 
     matching_skills = set(list_required_skills) & set(list_candidat_skills)
     intersection_score = len(matching_skills) / len(list_required_skills)
@@ -95,19 +98,24 @@ def submit():
         "email": email,
         "phone": phone,
         "cv": Binary(cv_data),
-        "rank" : str(intersection_score*100)
+        "grade" : "{}%".format(round(intersection_score*100 , 3)) 
     }
     job_collection.update_one(
         {"_id": ObjectId(global_job_id)},
         {"$push": {"job_applicants": job_applicant}})
-    return render_template('success_add_candidat.html')
+    # return f"required skills is: {list_required_skills} and {list_candidat_skills}"
+    return redirect('/success_add')
+
 # ===================FIN SUBMIT CANDIDT ==================
+@app.route('/success_add')
+def success_add():
+    return render_template('success_add_candidat.html')
 # =============DOWNLOAD CV===============
 @app.route('/dashboard/classement/<id>' , methods=["GET"])
 def classement(id): 
     candidates = mongo.db.jobs.find({"_id": ObjectId(id)})
-    jn = candidates[0]['job_name']
-    return render_template("/admin/classement.html", candidates=candidates , jn=jn)
+    # jn = candidates[0]['job_name']
+    return render_template("/admin/classement.html", candidates=candidates)
 
 
 @app.route("/dashboard/classement/<id>/cv", methods=["GET"])

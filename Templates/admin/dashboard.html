@@ -98,7 +98,7 @@
                       <label for="job_name">Job Name</label>
                       </div>
                       <div class="form-floating"> 
-                          <input type="text" class="form-control mb-3" id="required_skills" name="required_skills" placeholder="Job Name" value="{{job.required_skills}}">
+                          <input type="text" class="form-control mb-3" id="required_skills" name="required_skills" placeholder="Job Name" value="{{','.join(job.required_skills)}}">
                           <label for="required_skills">Required Skills</label>
                       </div>
                       <div class="form-floating">
