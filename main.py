@@ -49,10 +49,7 @@ def dashboard():
     jobs = mongo.db.jobs.find()
 
     return render_template('/admin/dashboard.html' , jobs = jobs , name_admin = global_name_admin)
-# @app.after_request
-# def after_request(response):
-#     response.headers["Cache-Control"] = "no-cahe, no-store,must-revalidate" 
-#     return response
+
 
 @app.route('/contact')
 def contact():
