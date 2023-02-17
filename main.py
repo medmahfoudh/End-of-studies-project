@@ -2,9 +2,14 @@ import base64
 from bson import ObjectId
 from flask import Flask, make_response, redirect,render_template, request, session, url_for 
 from pymongo import MongoClient 
-
 from flask_pymongo import PyMongo 
 from bson.binary import Binary 
+from pyresparser import ResumeParser 
+import os
+from docx import Document 
+from io import BytesIO
+import tempfile
+
 
 
 
@@ -70,6 +75,18 @@ def submit():
     phone = request.form['phone']
     cv = request.files['cv']
     cv_data = cv.read()
+    cv_io = BytesIO(cv_data)
+    cv_io.name = f"{global_job_id}.pdf"
+    resume = ResumeParser(cv_io).get_extracted_data()
+
+    #Model De Classification les CVs
+
+    list_candidat_skills = resume['skills']
+    list_required_skills = ['Analytics', 'Python', 'Php', 'Tkinter', 'Java', 'Adobe', 'Sql', 'Mysql', 'Html', 'C++', 'Js', 'Css', 'Javascript', 'Matplotlib', 'Illustrator', 'Nosql', 'Flask', 'Apis','Website','Sql','Engineering','French','Unix','Datasets','Training','Math','C++','Ai','Linux']
+
+    matching_skills = set(list_required_skills) & set(list_candidat_skills)
+    intersection_score = len(matching_skills) / len(list_required_skills)
+
 
     # Save the data in MongoDB
     job_applicant = {
@@ -77,13 +94,13 @@ def submit():
         "name": name,
         "email": email,
         "phone": phone,
-        "cv": Binary(cv_data)
+        "cv": Binary(cv_data),
+        "rank" : str(intersection_score*100)
     }
     job_collection.update_one(
         {"_id": ObjectId(global_job_id)},
         {"$push": {"job_applicants": job_applicant}})
     return render_template('success_add_candidat.html')
-    # return f"Job application submitted successfully!
 # ===================FIN SUBMIT CANDIDT ==================
 # =============DOWNLOAD CV===============
 @app.route('/dashboard/classement/<id>' , methods=["GET"])
