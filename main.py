@@ -28,14 +28,14 @@ def sign_in():
     if request.method == "POST":
         admin = mongo.db.admins.find_one({"name": request.form["name"], "password": request.form["password"]})
         name_admin = request.form["name"]
+        global global_name_admin
         global_name_admin = name_admin
         jobs = mongo.db.jobs.find()
-        global_jobs = jobs
         isAdmin = True
         if admin:
             session["admin"] = True
             isAdmin = True
-            return render_template('/admin/dashboard.html' , name_admin=name_admin ,  jobs = jobs )
+            return redirect('dashboard') 
         else:
             isAdmin = False
 
@@ -44,11 +44,11 @@ def sign_in():
 
 
 
-
 @app.route('/dashboard' , methods = ["GET"])
 def dashboard():
     jobs = mongo.db.jobs.find()
-    return render_template('/admin/dashboard.html' , jobs = jobs )
+
+    return render_template('/admin/dashboard.html' , jobs = jobs , name_admin = global_name_admin)
 # @app.after_request
 # def after_request(response):
 #     response.headers["Cache-Control"] = "no-cahe, no-store,must-revalidate" 
@@ -138,18 +138,11 @@ def add_job():
 
     job_collection.insert_one(job)
     jobs = mongo.db.jobs.find()
-
-    return render_template('/admin/dashboard.html' , jobs = jobs)
+    return redirect('dashboard')
+    # return render_template('/admin/dashboard.html' , jobs = jobs)
 
 # ============FIN AJOUTER LES OFFRES D'EMPLOI==================
-# ===============SUPPRIMER L'OFFRE D'EMPLOI====================
-@app.route('/delete_job/<job_id>', methods=['POST','DELETE'])
-def delete_job(job_id):
-    mongo.db.jobs.delete_one({'_id': ObjectId(job_id)})
-    jobs = mongo.db.jobs.find()
 
-    return render_template('/admin/dashboard.html' , jobs = jobs )
-# ===============FIN SUPPRIMER L'OFFRE D'EMPLOI====================
 # ===============EDIT L'OFFRE D'EMPLOI====================
 @app.route('/edit_job/<job_id>' , methods = ['POST'])
 def modify_job(job_id):
@@ -158,11 +151,13 @@ def modify_job(job_id):
     required_skills = request.form['required_skills'].split(',')
     job_description = request.form['job_description']
     job_image = request.files['job_image']
+
     if job_image:
         image_string = job_image.read()
         encoded_image = base64.b64encode(image_string).decode('utf-8')
     else:
         encoded_image = None
+        
     db.jobs.update_one(
         {'_id': ObjectId(job_id)},
         {'$set': {
@@ -172,11 +167,17 @@ def modify_job(job_id):
             'job_image': encoded_image
         }}
     )
-    jobs = mongo.db.jobs.find()
-    return render_template('/admin/dashboard.html' , jobs = jobs )
+    return redirect(url_for('dashboard'))
+    # return render_template('/admin/dashboard.html' , jobs = jobs )
 
 
 # ===============FIN EDIT L'OFFRE D'EMPLOI====================
+# ===============SUPPRIMER L'OFFRE D'EMPLOI====================
+@app.route('/delete_job/<job_id>', methods=['POST','DELETE'])
+def delete_job(job_id):
+    mongo.db.jobs.delete_one({'_id': ObjectId(job_id)})
+    return redirect(url_for('dashboard'))
+# ===============FIN SUPPRIMER L'OFFRE D'EMPLOI====================
 
 # =============AFTER REQUEST=============
 
