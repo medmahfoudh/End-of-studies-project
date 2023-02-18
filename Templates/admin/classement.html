@@ -38,7 +38,6 @@
         <thead>
             <tr>
               
-                <td scope="col">Range</td>
                 <th scope="col">Nom</th>
                 <th scope="col">E-mail</th>
                 <th scope="col">Tel</th>
@@ -47,12 +46,12 @@
             </tr>
         </thead>
         <tbody>
-          {% set index = 1 %}
+
           {% for candidate in candidates %}
             
             {% for job_candidat in candidate.job_applicants|sort(attribute='grade', reverse = True) %}
             <tr>
-                <td>{{ index }}</td> 
+           
                 <td>{{ job_candidat.name }}</td>
                 <td>{{ job_candidat.email }}</td>
                 <td>{{ job_candidat.phone }}</td>
