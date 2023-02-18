@@ -1,6 +1,7 @@
 import base64
 from bson import ObjectId
 from flask import Flask, make_response, redirect,render_template, request, session, url_for 
+import pymongo
 from pymongo import MongoClient 
 from flask_pymongo import PyMongo 
 from bson.binary import Binary 
@@ -21,6 +22,7 @@ mongo = PyMongo(app)
 db = client['SmartRecruiter']
 # candidates_collection = db['job_applicants']
 job_collection = db['jobs']
+app.jinja_env.globals.update(enumerate=enumerate)
 
 
 @app.route('/' , methods = ["GET"])
@@ -98,7 +100,7 @@ def submit():
         "email": email,
         "phone": phone,
         "cv": Binary(cv_data),
-        "grade" : "{}%".format(round(intersection_score*100 , 3)) 
+        "grade" : round(intersection_score*100 , 1)
     }
     job_collection.update_one(
         {"_id": ObjectId(global_job_id)},
@@ -114,7 +116,6 @@ def success_add():
 @app.route('/dashboard/classement/<id>' , methods=["GET"])
 def classement(id): 
     candidates = mongo.db.jobs.find({"_id": ObjectId(id)})
-    # jn = candidates[0]['job_name']
     return render_template("/admin/classement.html", candidates=candidates)
 
 
@@ -208,3 +209,7 @@ def delete_job(job_id):
 
 if __name__ == '__main__':
     app.run(debug=True)
+
+
+
+

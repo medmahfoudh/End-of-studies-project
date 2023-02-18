@@ -37,7 +37,8 @@
     <table class="table table-striped">
         <thead>
             <tr>
-                <th scope="col" >Range</th>
+              
+                <td scope="col">Range</td>
                 <th scope="col">Nom</th>
                 <th scope="col">E-mail</th>
                 <th scope="col">Tel</th>
@@ -46,19 +47,28 @@
             </tr>
         </thead>
         <tbody>
-            {% for candidate in candidates %}
-                
-            {% for job_candidat in candidate.job_applicants %}
+          {% set index = 1 %}
+          {% for candidate in candidates %}
+            
+            {% for job_candidat in candidate.job_applicants|sort(attribute='grade', reverse = True) %}
             <tr>
-                <td>{{ 1 }}</td>
+                <td>{{ index }}</td> 
                 <td>{{ job_candidat.name }}</td>
                 <td>{{ job_candidat.email }}</td>
                 <td>{{ job_candidat.phone }}</td>
                 <td><a class="btn btn-primary" href="{{ url_for('download_cv', id=job_candidat.candidat_id) }}">Download CV</a></td>
-                <td><span class="badge text-bg-primary">{{job_candidat.grade }}</span></td>
+                {% if job_candidat.grade > 80 %}
+                <td class="bg-success text-center text-light"><b>{{job_candidat.grade}}%</b></td>
+                {% elif job_candidat.grade > 45 %}
+                <td class="bg-warning text-center text-light"><b>{{job_candidat.grade}}%</b></td>
+                {% else %}
+                <td class="bg-danger text-center text-light"><b>{{job_candidat.grade}}%</b></td>
+                {% endif %}
             </tr>
+            
+            
             {% endfor %}
-            {% endfor %}
+          {% endfor %}
         </tbody>
 
 
