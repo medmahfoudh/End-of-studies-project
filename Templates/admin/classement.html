@@ -53,8 +53,12 @@
                 <td>{{ job_candidat.email }}</td>
                 <td>{{ job_candidat.phone }}</td>
                 <td><a class="btn btn-primary" href="{{ url_for('download_cv', id=job_candidat.candidat_id) }}">Download CV</a></td>
-                {% if job_candidat.grade > 80 %}
+                {% if job_candidat.grade > 95 %}
                 <td class="bg-success text-center text-light"><b>{{job_candidat.grade}}%</b></td>
+                {% elif job_candidat.grade > 80 %}
+                <td class="bg-success text-center text-light bg-opacity-75"><b>{{job_candidat.grade}}%</b></td>
+                {% elif job_candidat.grade > 75 %}
+                <td class="bg-success text-center text-light bg-opacity-50"><b>{{job_candidat.grade}}%</b></td>
                 {% elif job_candidat.grade > 45 %}
                 <td class="bg-warning text-center text-light"><b>{{job_candidat.grade}}%</b></td>
                 {% else %}
