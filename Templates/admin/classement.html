@@ -46,12 +46,9 @@
             </tr>
         </thead>
         <tbody>
-
           {% for candidate in candidates %}
-            
             {% for job_candidat in candidate.job_applicants|sort(attribute='grade', reverse = True) %}
             <tr>
-           
                 <td>{{ job_candidat.name }}</td>
                 <td>{{ job_candidat.email }}</td>
                 <td>{{ job_candidat.phone }}</td>
