@@ -80,7 +80,7 @@ def submit():
     cv_io.name = f"{global_job_id}.pdf"
     resume = ResumeParser(cv_io).get_extracted_data()
 
-    #Model De Classification les CVs
+    #Model De Classification CVs
     get_required_skills = mongo.db.jobs.find_one({"_id":ObjectId(global_job_id)})
     lower_required_skills = ' '.join(get_required_skills['required_skills']).lower()
     lower_candidat_skills = ' '.join(resume['skills']).lower()
