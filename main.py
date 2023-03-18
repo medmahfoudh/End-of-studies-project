@@ -80,13 +80,13 @@ def submit():
     cv_io.name = f"{global_job_id}.pdf"
     resume = ResumeParser(cv_io).get_extracted_data()
 
-    #Model De Classification CVs
+    #Model Classification CVs
     get_required_skills = mongo.db.jobs.find_one({"_id":ObjectId(global_job_id)})
-    lower_required_skills = ' '.join(get_required_skills['required_skills']).lower()
-    lower_candidat_skills = ' '.join(resume['skills']).lower()
-    list_candidat_skills = lower_candidat_skills.split(' ')
+    lower_required_skills = ','.join(get_required_skills['required_skills']).lower()
+    lower_candidat_skills = ','.join(resume['skills']).lower()
+    list_candidat_skills = lower_candidat_skills.split(',')
 
-    list_required_skills = lower_required_skills.split(' ')
+    list_required_skills = lower_required_skills.split(',')
 
     matching_skills = set(list_required_skills) & set(list_candidat_skills)
     intersection_score = len(matching_skills) / len(list_required_skills)
@@ -99,13 +99,14 @@ def submit():
         "email": email,
         "phone": phone,
         "cv": Binary(cv_data),
-        "grade" : round(intersection_score*100 , 1)
+        "grade" : round(intersection_score*100 , 2)
     }
     job_collection.update_one(
         {"_id": ObjectId(global_job_id)},
         {"$push": {"job_applicants": job_applicant}})
     # return f"required skills is: {list_required_skills} and {list_candidat_skills}"
     return redirect('/success_add')
+    return redirect(url_for('success_add'))
 
 # ===================FIN SUBMIT CANDIDT ==================
 @app.route('/success_add')
@@ -131,6 +132,7 @@ def download_cv(id):
     response.headers["Content-Disposition"] = f"attachment; filename={id}.pdf"
     return response
     # return f"test completed! {cv_data}  "
+    # return f"c'est l'id {id}"
 
 # ============AJOUTER LES OFFRES D'EMPLOI==================
 @app.route("/dashboard/add_job" )
@@ -173,6 +175,7 @@ def modify_job(job_id):
     required_skills = request.form['required_skills'].split(',')
     job_description = request.form['job_description']
     job_image = request.files['job_image']
+    #encoded image 
 
     if job_image:
         image_string = job_image.read()
