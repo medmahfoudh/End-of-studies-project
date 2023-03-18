@@ -2,3 +2,16 @@ Packages:
 -Flask
 -Falsk-login
 -Flask-sqlalchemy
+
+-base64
+-bson > ObjectId
+-flask > Flask, make_response, redirect,render_template, request, session, url_for 
+-pymongo
+-pymongo > MongoClient 
+-flask_pymongo > PyMongo 
+-bson.binary > Binary 
+-pyresparser > ResumeParser 
+-os
+-docx > Document 
+-io > BytesIO
+-tempfile
