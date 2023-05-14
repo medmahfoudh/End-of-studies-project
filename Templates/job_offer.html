@@ -1,6 +1,4 @@
-
 <section class="cnt">
-
   <div class="title-vision">
     <h1>OFFRES D'EMPLOI</h1>
   </div>
@@ -40,23 +38,12 @@
             {% for i in offer.required_skills %}
             <span class="badge text-bg-warning">{{ i }}</span>
             {% endfor %}
-            <!-- <span class="badge text-bg-warning">TypeScript</span>
-            <span class="badge text-bg-warning">Python</span>
-            <span class="badge text-bg-warning">Node.Js</span>
-            <span class="badge text-bg-warning">Angular</span>
-            <span class="badge text-bg-warning">Express.Js</span>
-            <span class="badge text-bg-warning">MongoDB</span>
-            <span class="badge text-bg-warning">Cloud Platforms</span>
-            <span class="badge text-bg-warning">DataBases</span>  -->
           </div>
-    
           <a href="{{url_for('candidate_form', job_id = offer._id)}}" class="btn btn-outline-primary"> Cliquer Pour déposer Votre Dossier</a>
-        </div>
-        
+        </div> 
       </div>
     </div>
   </div>
-
   {% endfor %}
   <!-- ==============PYTHON DEVELOPPER CARD=============== -->
   <!-- <div class="card mb-3 w-75 crd-pc">

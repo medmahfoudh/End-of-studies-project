@@ -7,10 +7,7 @@ from flask_pymongo import PyMongo
 from bson.binary import Binary 
 from pyresparser import ResumeParser 
 import os
-from docx import Document 
 from io import BytesIO
-import tempfile
-
 
 
 
@@ -21,13 +18,14 @@ app.config["MONGO_URI"] = "mongodb://localhost:27017/SmartRecruiter"
 mongo = PyMongo(app)
 db = client['SmartRecruiter']
 job_collection = db['jobs']
-app.jinja_env.globals.update(enumerate=enumerate)
+# app.jinja_env.globals.update(enumerate=enumerate)
 
 
 @app.route('/' , methods = ["GET"])
 def home():
     jobs_offers = mongo.db.jobs.find()
     return render_template('home.html' , jobs_offers=jobs_offers)
+
 
 @app.route('/sign_in' , methods=["GET", "POST"])
 def sign_in():
@@ -44,9 +42,10 @@ def sign_in():
             return redirect('dashboard') 
         else:
             isAdmin = False
-
             return render_template('sign_in.html' , isAdmin = isAdmin)
     return render_template('sign_in.html')
+
+
 
 
 
@@ -80,7 +79,7 @@ def submit():
     cv_io.name = f"{global_job_id}.pdf"
     resume = ResumeParser(cv_io).get_extracted_data()
 
-    #Model Classification CVs
+    #Model de Classification les CVs
     get_required_skills = mongo.db.jobs.find_one({"_id":ObjectId(global_job_id)})
     lower_required_skills = ','.join(get_required_skills['required_skills']).lower()
     lower_candidat_skills = ','.join(resume['skills']).lower()
@@ -90,7 +89,6 @@ def submit():
 
     matching_skills = set(list_required_skills) & set(list_candidat_skills)
     intersection_score = len(matching_skills) / len(list_required_skills)
-
 
     # Save the data in MongoDB
     job_applicant = {
@@ -104,9 +102,8 @@ def submit():
     job_collection.update_one(
         {"_id": ObjectId(global_job_id)},
         {"$push": {"job_applicants": job_applicant}})
-    # return f"required skills is: {list_required_skills} and {list_candidat_skills}"
     return redirect('/success_add')
-    return redirect(url_for('success_add'))
+    # return redirect(url_for('success_add'))
 
 # ===================FIN SUBMIT CANDIDT ==================
 @app.route('/success_add')
