@@ -176,3 +176,8 @@ a {
   align-items: center;
   justify-content: center;
 }
+
+
+.btn-submit{
+  margin-top: 10px;
+}

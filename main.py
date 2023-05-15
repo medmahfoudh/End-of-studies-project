@@ -1,12 +1,10 @@
 import base64
 from bson import ObjectId
 from flask import Flask, make_response, redirect,render_template, request, session, url_for 
-import pymongo
 from pymongo import MongoClient 
 from flask_pymongo import PyMongo 
 from bson.binary import Binary 
 from pyresparser import ResumeParser 
-import os
 from io import BytesIO
 
 

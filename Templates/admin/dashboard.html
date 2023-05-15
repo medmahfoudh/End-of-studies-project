@@ -63,7 +63,6 @@
 
 {% block body %}
 <secttion class="cnt">
-
   <table class="table table-striped">
     <thead>
       <tr>
@@ -72,12 +71,9 @@
     </thead>
     <tbody>
       {% for job in jobs %}
-        
       <tr>
         <td> <button class="btn btn-loght"> <b> {{job.job_name}} </b></button></td>
-
         <td><a href="{{ url_for('classement', id=job._id) }}" class="btn btn-primary"> Afficher le classement</a></td>
-
         <td>
           <form action="{{url_for('modify_job' , job_id = job._id)}}" method="POST" enctype="multipart/form-data">
             <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#EditModal{{job._id}}">Edit</button>
