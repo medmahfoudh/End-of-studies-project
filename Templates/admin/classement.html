@@ -32,13 +32,11 @@
 </div>
 {% endblock %}
 {% block body %}
-
 <div class="table-classement ">
     <p class="text-center "> <strong>Classement des candidats à l'emploi</strong></p>
     <table class="table table-striped">
         <thead>
             <tr>
-              
                 <th class="bg-success bg-gradient bg-opacity-10" scope="col">Nom</th>
                 <th class="bg-success bg-gradient bg-opacity-10" scope="col">E-mail</th>
                 <th class="bg-success bg-gradient bg-opacity-10" scope="col">Tel</th>
@@ -66,13 +64,9 @@
                 <td class="bg-danger text-center text-light"><b>{{job_candidat.grade}}%</b></td>
                 {% endif %}
             </tr>
-            
-            
             {% endfor %}
           {% endfor %}
         </tbody>
-
-
     </table>
 </div>
 {% endblock %}

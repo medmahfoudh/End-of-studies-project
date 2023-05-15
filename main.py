@@ -52,8 +52,9 @@ def sign_in():
 @app.route('/dashboard' , methods = ["GET"])
 def dashboard():
     jobs = mongo.db.jobs.find()
-
     return render_template('/admin/dashboard.html' , jobs = jobs , name_admin = global_name_admin)
+
+
 
 
 @app.route('/contact')
@@ -128,8 +129,6 @@ def download_cv(id):
     response = make_response(cv_data)
     response.headers["Content-Disposition"] = f"attachment; filename={id}.pdf"
     return response
-    # return f"test completed! {cv_data}  "
-    # return f"c'est l'id {id}"
 
 # ============AJOUTER LES OFFRES D'EMPLOI==================
 @app.route("/dashboard/add_job" )
