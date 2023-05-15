@@ -18,7 +18,7 @@ app.config["MONGO_URI"] = "mongodb://localhost:27017/SmartRecruiter"
 mongo = PyMongo(app)
 db = client['SmartRecruiter']
 job_collection = db['jobs']
-# app.jinja_env.globals.update(enumerate=enumerate)
+
 
 
 @app.route('/' , methods = ["GET"])
