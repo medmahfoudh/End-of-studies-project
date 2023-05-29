@@ -46,7 +46,6 @@ def sign_in():
 
 
 
-
 @app.route('/dashboard' , methods = ["GET"])
 def dashboard():
     jobs = mongo.db.jobs.find()
