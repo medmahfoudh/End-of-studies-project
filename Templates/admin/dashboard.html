@@ -76,7 +76,7 @@
         <td><a href="{{ url_for('classement', id=job._id) }}" class="btn btn-primary"> Afficher le classement</a></td>
         <td>
           <form action="{{url_for('modify_job' , job_id = job._id)}}" method="POST" enctype="multipart/form-data">
-            <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#EditModal{{job._id}}">Edit</button>
+            <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#EditModal{{job._id}}">Modifier</button>
             <div class="modal fade" id="EditModal{{job._id}}" tabindex="0" aria-labelledby="exampleModalLabel" aria-hidden="true">
               <div class="modal-dialog">
                 <div class="modal-content">
