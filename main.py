@@ -188,7 +188,6 @@ def modify_job(job_id):
     return redirect(url_for('dashboard'))
     # return render_template('/admin/dashboard.html' , jobs = jobs )
 
-
 # ===============FIN EDIT L'OFFRE D'EMPLOI====================
 # ===============SUPPRIMER L'OFFRE D'EMPLOI====================
 @app.route('/delete_job/<job_id>', methods=['POST','DELETE'])
